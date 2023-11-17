@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 public class Categories extends Application {
     @Override
     public void start(Stage primaryStage) {
-        final double SCENE_WIDTH = 1555;
+        final double SCENE_WIDTH = 1540;
         final double SCENE_HEIGHT = 780;
 
         Label label = new Label("Carlos Rodriguez");
