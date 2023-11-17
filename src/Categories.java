@@ -7,15 +7,12 @@ import javafx.scene.layout.Pane;
 public class Categories extends Application {
     @Override
     public void start(Stage primaryStage) {
-        final double SCENE_WIDTH = 1540;
-        final double SCENE_HEIGHT = 780;
-
         Label label = new Label("Carlos Rodriguez");
         label.setLayoutX(238);
         label.setLayoutY(200);
 
         Pane pane = new Pane(label);
-        Scene scene = new Scene(pane, SCENE_WIDTH, SCENE_HEIGHT);
+        Scene scene = new Scene(pane, 1540, 785);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

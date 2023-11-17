@@ -1,0 +1,23 @@
+.anchor-pane {
+    -fx-background-color: #201c1c;
+}
+
+.search-btn{
+    -fx-background-color: #383434;
+    -fx-prompt-text-fill: #a8a4a4;
+}
+
+.search-bar {
+    -fx-background-color: #383434;
+    -fx-prompt-text-fill: #a8a4a4;
+    -fx-background-radius: 7; /* Set the radius for rounded corners */
+    -fx-padding: 0 0 0 10; /* Add left padding to the prompt text */
+    -fx-font-family: "Arial";
+    -fx-text-fill: #a8a4a4;
+    /*-fx-border-color: transparent;
+    -fx-border-width: 2; /* Adjust the width as needed */
+}
+
+.search-bar-text {
+   
+}
