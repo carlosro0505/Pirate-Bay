@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MainPage",
+            "request": "launch",
+            "mainClass": "MainPage",
+            "projectName": "Pirate Bay_900f00fa"
+        },
+        {
+            "type": "java",
+            "name": "Search",
+            "request": "launch",
+            "mainClass": "Search",
+            "projectName": "Pirate Bay_900f00fa"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
