@@ -2,6 +2,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -31,10 +32,20 @@ public class App extends Application {
         imageView.setY(60);
 
         //background image
-        Image image2 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\orangeBack.jpg"));  
+         Image image2 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\orangeBack.jpg"));  
         ImageView backImage = new ImageView(image2);
         backImage.setFitWidth(1540);
-        backImage.setFitHeight(785);
+        backImage.setFitHeight(785); 
+
+        //x icon in searchBar
+        Image image7 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\xIcon.png"));  
+        ImageView x = new ImageView(image7);
+        x.setFitWidth(40);
+        x.setFitHeight(40);
+        Button xBtn = new Button();
+        xBtn.setGraphic(x);
+        xBtn.getStyleClass().addAll("transparent-background-btn");
+        xBtn.setPickOnBounds(true);
 
         //portal: buttons that move you on the webpage to four functions 
         Image image3 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\magnGlass.png"));  
@@ -68,10 +79,10 @@ public class App extends Application {
         fireBtn.getStyleClass().addAll("portals", "fireBtn");
 
         //4 vboxes to add labels under them
-        Label magnLabel = new Label("Search Torrents"); magnLabel.getStyleClass().add("portals");
-        Label catLabel = new Label("Browse Torrents"); catLabel.getStyleClass().add("portals");
-        Label recLabel= new Label("Recent Torrents"); recLabel.getStyleClass().add("portals");
-        Label fireLabel = new Label("Top 100"); fireLabel.getStyleClass().add("portals");
+        Label magnLabel = new Label(" Search \nTorrents"); magnLabel.getStyleClass().add("portals");
+        Label catLabel = new Label(" Browse \nTorrents"); catLabel.getStyleClass().add("portals");
+        Label recLabel= new Label(" Recent \nTorrents"); recLabel.getStyleClass().add("portals");
+        Label fireLabel = new Label("Top \n100"); fireLabel.getStyleClass().add("portals");
         VBox magn = new VBox(magnBtn, magnLabel);
         VBox cat = new VBox(catBtn, catLabel);
         VBox rec = new VBox(recBtn, recLabel);
@@ -88,38 +99,62 @@ public class App extends Application {
 
         // Top: Search Bar
         TextField searchBar = new TextField();
-        Button searchButton = new Button("Search");
-        HBox h = new HBox(searchBar, searchButton);
+        Button searchButton = new Button(" Search ");
+        HBox h = new HBox(xBtn, searchButton); 
+        h.setSpacing(0);
+        h.setAlignment(Pos.CENTER);
+        h.setMaxWidth(400); // Set a maximum width
+        //h.setAlignment(Pos.CENTER);
         searchBar.setPromptText("Pirate Search");
         searchBar.setPrefWidth(775);
         searchBar.setPrefHeight(58);
-        searchButton.setPrefHeight(58);
-        h.setAlignment(Pos.CENTER);
+        searchBar.setMaxWidth(775);
         searchBar.getStyleClass().add("search-bar");
         searchButton.getStyleClass().add("search-btn");
-        //searchBar.getStyleClass().add("search-bar-text");
+        searchButton.setPrefHeight(55);
+        searchButton.setPickOnBounds(true);
+
+        
+         // Event listener to toggle visibility based on text in the search bar
+        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.trim().isEmpty()) {
+                h.setVisible(false);
+            } else {
+                h.setVisible(true);
+            }
+        });
+
+        //event handler for x button
+         xBtn.setOnAction(event -> {
+            searchBar.setText("");
+        });        
+
+        // Initial state: hide the search button
+        h.setVisible(false); 
+
+        // StackPane to stack the searchButton on top of the searchBar
+        StackPane searchStack = new StackPane(searchBar, h);
+        StackPane.setAlignment(h, Pos.CENTER_RIGHT);
+        StackPane.setMargin(h, new Insets(0,0,0,605));
+        searchStack.setMaxWidth(775); // Set a maximum width
+
+        VBox searchAndBtns = new VBox(portal, searchStack);
+        searchAndBtns.setSpacing(40.0);
+        searchAndBtns.setAlignment(Pos.CENTER);                      
 
         AnchorPane root = new AnchorPane();
-        root.getStyleClass().add("anchor-pane");
+        //root.getStyleClass().add("anchor-pane");
 
-        VBox searchAndBtns = new VBox(portal, h);
-        searchAndBtns.setSpacing(40.0);
-
-
-        // Wrap the HBox and then the portal hbox with AnchorPane
-    
         AnchorPane.setTopAnchor(searchAndBtns, 360.0);
         AnchorPane.setLeftAnchor(searchAndBtns, 0.0);
         AnchorPane.setRightAnchor(searchAndBtns, 0.0);
 
-    
-        // Add the AnchorPane to the center region of the BorderPane
         root.getChildren().addAll(backImage, imageView, searchAndBtns);
-
+        
         Scene scene = new Scene(root, 1540, 785);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Center HBox with Offset");
+        primaryStage.setTitle("Stack Search Button on Top");
         primaryStage.show();
     }
 
@@ -127,8 +162,3 @@ public class App extends Application {
         launch(args);
     }
 }
-
-
-        
-
-    

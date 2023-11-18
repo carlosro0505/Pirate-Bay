@@ -5,18 +5,21 @@
 .search-btn{
     -fx-background-color: #ffcc04;
     -fx-prompt-text-fill: #a8a4a4;
+    -fx-background-radius: 15; /* Set the radius for rounded corners */
+    -fx-font-family: "Verdana";
+    -fx-text-fill: #000000;
+    -fx-font-size: 17px;
 }
 
 .search-bar {
     -fx-background-color: #302c34;
+    -fx-font-size: 17px;
     -fx-prompt-text-fill: #a8a4a4;
     -fx-background-radius: 15; /* Set the radius for rounded corners */
     -fx-padding: 0 0 0 10; /* Add left padding to the prompt text */
     -fx-font-family: "Verdana";
     -fx-text-fill: #a8a4a4;
-    -fx-font-weight: bold;
-    /*-fx-border-color: transparent;
-    -fx-border-width: 2; /* Adjust the width as needed */
+    
 }
 
 .portals {
@@ -42,3 +45,8 @@
 .sBtn{
     -fx-background-color: rgb(255, 255, 255)
 }
+
+.transparent-background-btn{
+    -fx-background-color: transparent;
+}
+
