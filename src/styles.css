@@ -1,23 +1,44 @@
 .anchor-pane {
-    -fx-background-color: #201c1c;
+    -fx-background-color: #161617;
 }
 
 .search-btn{
-    -fx-background-color: #383434;
+    -fx-background-color: #ffcc04;
     -fx-prompt-text-fill: #a8a4a4;
 }
 
 .search-bar {
-    -fx-background-color: #383434;
+    -fx-background-color: #302c34;
     -fx-prompt-text-fill: #a8a4a4;
-    -fx-background-radius: 7; /* Set the radius for rounded corners */
+    -fx-background-radius: 15; /* Set the radius for rounded corners */
     -fx-padding: 0 0 0 10; /* Add left padding to the prompt text */
-    -fx-font-family: "Arial";
+    -fx-font-family: "Verdana";
     -fx-text-fill: #a8a4a4;
+    -fx-font-weight: bold;
     /*-fx-border-color: transparent;
     -fx-border-width: 2; /* Adjust the width as needed */
 }
 
-.search-bar-text {
-   
+.portals {
+    -fx-background-radius: 15;
+    -fx-font-family: "Verdana";
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.fireBtn{
+    -fx-background-color: #000000;
+}
+
+.recBtn{
+    -fx-background-color:#fcd42c;
+}
+
+.browseBtn{
+    -fx-background-color: #501cbc;
+}
+
+.sBtn{
+    -fx-background-color: rgb(255, 255, 255)
 }
