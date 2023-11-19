@@ -137,6 +137,8 @@ public class App extends Application {
         });
         //event handler for "top 100" button
          fireBtn.setOnAction(event -> {
+            SceneManager.showItemsScene();
+            primaryStage.close(); // Close the primary stage
         });
         //event handler for "browse torrents" button
          catBtn.setOnAction(event -> {
@@ -178,7 +180,6 @@ public class App extends Application {
          root.widthProperty().addListener((obs, oldVal, newVal) -> {
             //calculates by getting width of the anchorPane then the w of the imageView, subtracts, divs by 2
             double leftAnchor =( (newVal.doubleValue() - imageView.getBoundsInParent().getWidth()) / 2);
-                        System.out.println((newVal.doubleValue() - imageView.getBoundsInParent().getWidth()) / 2);
             AnchorPane.setLeftAnchor(imageView, leftAnchor);
             AnchorPane.setRightAnchor(imageView, leftAnchor);
         }); 

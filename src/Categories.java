@@ -15,9 +15,12 @@ public class Categories extends Application {
 
     @Override
     public void start(Stage stage) {
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+
         Label label = new Label("Carlos Rodriguez");
         AnchorPane root = new AnchorPane(label);
-        Scene scene = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
+        Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
         stage.setScene(scene);
         stage.show();
     }
