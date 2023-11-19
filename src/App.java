@@ -137,8 +137,7 @@ public class App extends Application {
         });
         //event handler for "top 100" button
          fireBtn.setOnAction(event -> {
-            SceneManager.showItemsScene();
-            primaryStage.close(); // Close the primary stage
+            
         });
         //event handler for "browse torrents" button
          catBtn.setOnAction(event -> {
@@ -148,6 +147,11 @@ public class App extends Application {
         //event handler for "Search Torrents" buttons
         magnBtn.setOnAction(event -> {
         });
+
+        /*
+        to show the items page:
+        SceneManager.showItemsScene();
+        primaryStage.close(); // Close the primary stage */
 
         //make the buttons pop when hovering over them
         ScaleTransitionHelper.createScaleTransition(magnBtn, magnLabel);
