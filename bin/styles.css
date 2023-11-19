@@ -50,3 +50,7 @@
     -fx-background-color: transparent;
 }
 
+.btn-pop-color{
+    -fx-text-fill: #d6d4d4;
+}
+

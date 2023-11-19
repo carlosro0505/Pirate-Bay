@@ -1,9 +1,12 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import javafx.animation.ScaleTransition;
+import javafx.animation.SequentialTransition;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,23 +18,24 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
+        //gets your screen's dimensions
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
 
         //image logo pirate
         Image image = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\pirateLogo3.png"));  
         ImageView imageView = new ImageView(image);
         imageView.setPreserveRatio(true);  
         imageView.setFitHeight(260); 
-        //imageView.setX(678);
-        imageView.setX(550);
-        imageView.setY(60);
 
-        //background image
+       //background image
          Image image2 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\orangeBack.jpg"));  
         ImageView backImage = new ImageView(image2);
         backImage.setFitWidth(1540);
@@ -129,13 +133,19 @@ public class App extends Application {
             searchBar.setText("");
         });        
 
+        //make the buttons pop when hovering over them
+        ScaleTransitionHelper.createScaleTransition(magnBtn, magnLabel);
+        ScaleTransitionHelper.createScaleTransition(catBtn, catLabel);
+        ScaleTransitionHelper.createScaleTransition(fireBtn, fireLabel);
+        ScaleTransitionHelper.createScaleTransition(recBtn, recLabel);
+
         // Initial state: hide the search button
         h.setVisible(false); 
 
         // StackPane to stack the searchButton on top of the searchBar
         StackPane searchStack = new StackPane(searchBar, h);
         StackPane.setAlignment(h, Pos.CENTER_RIGHT);
-        StackPane.setMargin(h, new Insets(0,0,0,605));
+        StackPane.setMargin(h, new Insets(0,0,0,622));
         searchStack.setMaxWidth(775); // Set a maximum width
 
         VBox searchAndBtns = new VBox(portal, searchStack);
@@ -143,15 +153,26 @@ public class App extends Application {
         searchAndBtns.setAlignment(Pos.CENTER);                      
 
         AnchorPane root = new AnchorPane();
-        //root.getStyleClass().add("anchor-pane");
 
         AnchorPane.setTopAnchor(searchAndBtns, 360.0);
         AnchorPane.setLeftAnchor(searchAndBtns, 0.0);
         AnchorPane.setRightAnchor(searchAndBtns, 0.0);
+        
+        //to center the image no matter what screen
+        
+         // Set constraints for the ImageView to be horizontally centered
+         root.widthProperty().addListener((obs, oldVal, newVal) -> {
+            //calculates by getting width of the anchorPane then the w of the imageView, subtracts, divs by 2
+            double leftAnchor =( (newVal.doubleValue() - imageView.getBoundsInParent().getWidth()) / 2);
+                        System.out.println((newVal.doubleValue() - imageView.getBoundsInParent().getWidth()) / 2);
+            AnchorPane.setLeftAnchor(imageView, leftAnchor);
+            AnchorPane.setRightAnchor(imageView, leftAnchor);
+        }); 
 
         root.getChildren().addAll(backImage, imageView, searchAndBtns);
-        
-        Scene scene = new Scene(root, 1540, 785);
+        //Scene scene = new Scene(root, 1540, 785);
+        Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
+
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("Stack Search Button on Top");
@@ -162,3 +183,4 @@ public class App extends Application {
         launch(args);
     }
 }
+
