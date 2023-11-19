@@ -131,7 +131,21 @@ public class App extends Application {
         //event handler for x button
          xBtn.setOnAction(event -> {
             searchBar.setText("");
-        });        
+        });     
+        //event handler for "recent torrents" button
+         recBtn.setOnAction(event -> {
+        });
+        //event handler for "top 100" button
+         fireBtn.setOnAction(event -> {
+        });
+        //event handler for "browse torrents" button
+         catBtn.setOnAction(event -> {
+            SceneManager.showCategoriesScene();
+            primaryStage.close(); // Close the primary stage
+        });
+        //event handler for "Search Torrents" buttons
+        magnBtn.setOnAction(event -> {
+        });
 
         //make the buttons pop when hovering over them
         ScaleTransitionHelper.createScaleTransition(magnBtn, magnLabel);
@@ -172,6 +186,8 @@ public class App extends Application {
         root.getChildren().addAll(backImage, imageView, searchAndBtns);
         //Scene scene = new Scene(root, 1540, 785);
         Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
+        SceneManager.setPrimaryStage(primaryStage);
+
 
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         primaryStage.setScene(scene);
