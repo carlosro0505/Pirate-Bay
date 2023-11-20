@@ -6,11 +6,10 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 
-public class Item extends Application {
+public class Recents extends Application {
     private Stage primaryStage;
-    private Scene itemScene;
 
-    public Item(Stage primaryStage) {
+    public Recents(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
 

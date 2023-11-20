@@ -9,20 +9,31 @@ public class SceneManager {
         primaryStage = stage;
     }
 
-    public static void showCategoriesScene() {
+    public static void showCategoriesScene() throws FileNotFoundException {
         Categories categories = new Categories(primaryStage);
-        categories.start(new Stage());
+        categories.start(primaryStage);
     }
 
-    public static void showItemsScene() {
+    public static void showItemsScene() throws FileNotFoundException {
         Item item = new Item(primaryStage);
-        item.start(new Stage());
+        item.start(primaryStage);
     }
 
-    public static void showSearchScene() {
+    public static void showSearchScene() throws FileNotFoundException {
         Search search = new Search(primaryStage);
-        search.start(new Stage());
+        search.start(primaryStage);
     }
+    
+    public static void showTrendingScene() throws FileNotFoundException {
+        Trending trending = new Trending(primaryStage);
+        trending.start(primaryStage);
+    }
+
+    public static void showRecentsScene() throws FileNotFoundException {
+        Recents recents = new Recents(primaryStage);
+        recents.start(primaryStage);
+    }
+
 
     public static void showMainScene() {
         App app = new App();

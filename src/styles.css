@@ -30,6 +30,14 @@
     -fx-font-weight: bold;
 }
 
+.portals-minimized {
+    -fx-background-radius: 15;
+    -fx-font-family: "Verdana";
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 10.5px;
+    -fx-font-weight: bold;
+}
+
 .fireBtn{
     -fx-background-color: #000000;
 }
