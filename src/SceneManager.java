@@ -19,6 +19,11 @@ public class SceneManager {
         item.start(new Stage());
     }
 
+    public static void showSearchScene() {
+        Search search = new Search(primaryStage);
+        search.start(new Stage());
+    }
+
     public static void showMainScene() {
         App app = new App();
         try {

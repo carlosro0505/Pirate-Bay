@@ -132,6 +132,12 @@ public class App extends Application {
          xBtn.setOnAction(event -> {
             searchBar.setText("");
         });     
+        searchButton.setOnAction(event -> {
+            if(!searchBar.getText().equals("")){
+                SceneManager.showSearchScene();
+                primaryStage.close(); // Close the primary stage     
+            } 
+        }); 
         //event handler for "recent torrents" button
          recBtn.setOnAction(event -> {
         });
