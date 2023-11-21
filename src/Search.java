@@ -48,8 +48,9 @@ public class Search extends Application {
         searchAndBtns.setAlignment(Pos.CENTER);                   
 
         TableView<Data> tableView = new TableView<>();
-        tableView.setPrefWidth(0.8 * bounds.getWidth());  // Set the preferred width
+        tableView.setPrefWidth(0.82 * bounds.getWidth());  // Set the preferred width
         tableView.getStyleClass().add("table-view");
+        tableView.setPrefHeight(0.77 * bounds.getHeight());
         //gets rid of the extra space in the column
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -82,20 +83,43 @@ public class Search extends Application {
         tableView.getColumns().addAll(catColumn, nameColumn, dateColumn, sizeColumn, SEColumn, LEColumn, uplColumn);
         ObservableList<Data> items = FXCollections.observableArrayList(
             new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ),
+            new Data("song", "Star ", "11/19/20df23", "12 dGb", "21d", "d42", "dJohnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ),
+            new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ),
+            new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ),
+            new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ),
+            new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ),
+            new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ),
+            new Data("song", "Star ", "11/19/20df23", "12 dGb", "21d", "d42", "dJohnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ),
+            new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ),
+            new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ),
+            new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ),
+            new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ), 
             new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ));
         tableView.setItems(items);
    
         AnchorPane root = new AnchorPane();
+        root.getStyleClass().add("search-background");
         AnchorPane.setTopAnchor(tableView, 175.0);
         AnchorPane.setLeftAnchor(tableView, 270.0);
         AnchorPane.setTopAnchor(searchAndBtns, 0.025 * bounds.getHeight());
         AnchorPane.setLeftAnchor(searchAndBtns, 0.0);
         AnchorPane.setRightAnchor(searchAndBtns, 0.0);
-        System.out.println(bounds.getHeight());
-        System.out.println(bounds.getWidth());
+       // System.out.println(bounds.getHeight());
+       // System.out.println(bounds.getWidth());
 
         //add tableView after
-        root.getChildren().addAll(backImage, searchAndBtns, tableView);
+        root.getChildren().addAll(searchAndBtns, tableView);
         Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
         System.out.println(getClass().getResource("styles.css").toExternalForm());
 
