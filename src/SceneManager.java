@@ -34,8 +34,7 @@ public class SceneManager {
         recents.start(primaryStage);
     }
 
-
-    public static void showMainScene() {
+    public static void showMainScene() throws FileNotFoundException {
         App app = new App();
         try {
             app.start(primaryStage);

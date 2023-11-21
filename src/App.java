@@ -177,9 +177,7 @@ public class App extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        });
-
-        
+        });        
 
         //make the buttons pop when hovering over them
         ScaleTransitionHelper.createScaleTransition(magnBtn, magnLabel);
@@ -220,7 +218,7 @@ public class App extends Application {
         //Scene scene = new Scene(root, 1540, 785);
         Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
         SceneManager.setPrimaryStage(primaryStage);
-
+        primaryStage.setOnShown(event -> searchBar.requestFocus());
 
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         primaryStage.setScene(scene);

@@ -47,21 +47,21 @@ public class Search extends Application {
       //  searchAndBtns.setSpacing(5.0);
         searchAndBtns.setAlignment(Pos.CENTER);                   
 
-        AnchorPane.setTopAnchor(searchAndBtns, 10.0);
-        AnchorPane.setLeftAnchor(searchAndBtns, 0.0);
-        AnchorPane.setRightAnchor(searchAndBtns, 0.0);
-
         TableView<Data> tableView = new TableView<>();
+        tableView.setPrefWidth(0.8 * bounds.getWidth());  // Set the preferred width
+        tableView.getStyleClass().add("table-view");
         //gets rid of the extra space in the column
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        //tableView.setStyle("-fx-background-color: #22bad9; -fx-text-fill: #d6d4d4;");
         //the second value here sets what time the column takes in as input
         TableColumn<Data, String> catColumn = new TableColumn<>("Categories");
         TableColumn<Data, String> nameColumn = new TableColumn<>("Name");
-        TableColumn<Data, String> dateColumn = new TableColumn<>("Uploaded on");
+        TableColumn<Data, String> dateColumn = new TableColumn<>("Uploaded On");
         TableColumn<Data, String> sizeColumn = new TableColumn<>("Size");
         TableColumn<Data, String> SEColumn = new TableColumn<>("SE");
         TableColumn<Data, String> LEColumn = new TableColumn<>("LE");
-        TableColumn<Data, String> uplColumn = new TableColumn<>("Uploaded \n     By");
+        TableColumn<Data, String> uplColumn = new TableColumn<>("Uploaded By");
         
         catColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -70,18 +70,35 @@ public class Search extends Application {
         SEColumn.setCellValueFactory(new PropertyValueFactory<>("SE"));
         LEColumn.setCellValueFactory(new PropertyValueFactory<>("LE"));
         uplColumn.setCellValueFactory(new PropertyValueFactory<>("uploadBy"));
-        
+
+        catColumn.getStyleClass().add("table-view");
+        nameColumn.getStyleClass().add("table-view");
+        dateColumn.getStyleClass().add("table-view");
+        sizeColumn.getStyleClass().add("table-view");
+        SEColumn.getStyleClass().add("table-view");
+        LEColumn.getStyleClass().add("table-view");
+        uplColumn.getStyleClass().add("table-view");
+
         tableView.getColumns().addAll(catColumn, nameColumn, dateColumn, sizeColumn, SEColumn, LEColumn, uplColumn);
         ObservableList<Data> items = FXCollections.observableArrayList(
-            new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ));
+            new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny" ), 
+            new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg" ));
         tableView.setItems(items);
    
         AnchorPane root = new AnchorPane();
-        AnchorPane.setRightAnchor(tableView, 50.0);
+        AnchorPane.setTopAnchor(tableView, 175.0);
+        AnchorPane.setLeftAnchor(tableView, 270.0);
+        AnchorPane.setTopAnchor(searchAndBtns, 0.025 * bounds.getHeight());
+        AnchorPane.setLeftAnchor(searchAndBtns, 0.0);
+        AnchorPane.setRightAnchor(searchAndBtns, 0.0);
+        System.out.println(bounds.getHeight());
+        System.out.println(bounds.getWidth());
 
         //add tableView after
-        root.getChildren().addAll(backImage, searchAndBtns);
+        root.getChildren().addAll(backImage, searchAndBtns, tableView);
         Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
+        System.out.println(getClass().getResource("styles.css").toExternalForm());
+
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stage.setScene(scene);
         stage.show();

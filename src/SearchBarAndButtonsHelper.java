@@ -37,7 +37,7 @@ public class SearchBarAndButtonsHelper {
                 searchBar.setPrefWidth(1530);
         searchBar.setPrefHeight(43.5);
         //searchBar.setMaxWidth(775);
-        searchBar.getStyleClass().add("search-bar");
+        searchBar.getStyleClass().add("search-bar-minimized");
         searchButton.getStyleClass().add("search-btn");
         searchButton.setPrefHeight(40);
         searchButton.setPickOnBounds(true);
@@ -62,7 +62,7 @@ public class SearchBarAndButtonsHelper {
       
         //searchStack.getStyleClass().add("anchor-pane");
         StackPane.setMargin(h, new Insets(0,-(0.08 * bounds.getWidth()),0,0));
-        //searchStack.setMaxWidth(775); // Set a maximum width
+        searchStack.setMaxWidth(0.98 * bounds.getWidth()); // Set a maximum width
 
         //portal: buttons that move you on the webpage to four functions 
         Image image3 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\magnGlass.png"));  
@@ -71,7 +71,7 @@ public class SearchBarAndButtonsHelper {
         magniGlass.setFitHeight(27.75);
         Button magnBtn = new Button();
         magnBtn.setGraphic(magniGlass);
-        magnBtn.getStyleClass().addAll("portals", "sBtn");
+        magnBtn.getStyleClass().addAll("portals-minimized", "sBtn");
         //magnBtn.setMinSize(25,25);
         Image image4 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\recents.png"));  
         ImageView recents = new ImageView(image4);
@@ -79,21 +79,21 @@ public class SearchBarAndButtonsHelper {
         recents.setFitHeight(27.75);
         Button recBtn = new Button();
         recBtn.setGraphic(recents);
-        recBtn.getStyleClass().addAll("portals", "recBtn");
+        recBtn.getStyleClass().addAll("portals-minimized", "recBtn");
         Image image5 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\categories.png"));  
         ImageView categories = new ImageView(image5);
         categories.setFitWidth(22.5);
         categories.setFitHeight(27.75);
         Button catBtn = new Button();
         catBtn.setGraphic(categories);
-        catBtn.getStyleClass().addAll("portals", "browseBtn");
+        catBtn.getStyleClass().addAll("portals-minimized", "browseBtn");
         Image image6 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\fire.png"));  
         ImageView fire = new ImageView(image6);
         fire.setFitWidth(22.5);
         fire.setFitHeight(27.75);
         Button fireBtn = new Button();
         fireBtn.setGraphic(fire);
-        fireBtn.getStyleClass().addAll("portals", "fireBtn");
+        fireBtn.getStyleClass().addAll("portals-minimized", "fireBtn");
 
         //4 vboxes to add labels under them
         Label magnLabel = new Label(" Search \nTorrents"); magnLabel.getStyleClass().add("portals");
@@ -162,7 +162,7 @@ public class SearchBarAndButtonsHelper {
         //event handler for "Search Torrents" buttons
         magnBtn.setOnAction(event -> {
             try {
-            SceneManager.showItemsScene();
+            SceneManager.showMainScene();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -180,11 +180,11 @@ public class SearchBarAndButtonsHelper {
 
         //hbox for button portals
         HBox portal = new HBox(magn, cat, rec, fireV);
-        portal.setSpacing(50);
+        portal.setSpacing(0.063 * bounds.getHeight());
         portal.setAlignment(Pos.CENTER);
 
         VBox searchAndBtns = new VBox(portal, searchStack);
-        searchAndBtns.setSpacing(30.0);
+        searchAndBtns.setSpacing(20.0);
         searchAndBtns.setAlignment(Pos.CENTER); 
 
         return searchAndBtns;
