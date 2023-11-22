@@ -7,7 +7,6 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -48,7 +47,7 @@ public class App extends Application {
         x.setFitHeight(40);
         Button xBtn = new Button();
         xBtn.setGraphic(x);
-        xBtn.getStyleClass().addAll("transparent-background-btn");
+        xBtn.getStyleClass().addAll("transparent-background");
         xBtn.setPickOnBounds(true);
 
         //portal: buttons that move you on the webpage to four functions 
