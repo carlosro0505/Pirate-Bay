@@ -38,7 +38,14 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "Pirate Bay_900f00fa",
+          //  "vmArgs": "--module-path \"../lib\" --add-modules javafx.controls,javafx.fxml"
+          //  "vmArgs": "--module-path \"${workspaceRoot}/lib\" --add-modules javafx.controls,javafx.fxml",
+           // "cwd": "${workspaceRoot}/src"
+           //working one:
             "vmArgs": "--module-path \"C:/Users/carlo/Downloads/openjfx-21_windows-x64_bin-sdk/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml"
+            //this one should work but doesn't
+            //"vmArgs": "--module-path \"C:/Users/carlo/OneDrive/Desktop/Pirate Bay/lib\" --add-modules javafx.controls,javafx.fxml"
+            
         }
     ]
 }
