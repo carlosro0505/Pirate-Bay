@@ -22,11 +22,6 @@ public class SearchBarAndButtonsHelper {
     public static VBox createBar() throws FileNotFoundException{
          Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
-
-        Image image2 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\orangeBack.jpg"));  
-        ImageView backImage = new ImageView(image2);
-        backImage.setFitWidth(1540);
-        backImage.setFitHeight(785);
         
         // Top: Search Bar
         //made the height and other elements scale by 0.75 compared to App.java 
@@ -41,15 +36,17 @@ public class SearchBarAndButtonsHelper {
         searchButton.getStyleClass().add("search-btn");
         searchButton.setPrefHeight(40);
         searchButton.setPickOnBounds(true);
-         //x icon in searchBar
-        Image image7 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\xIcon.png"));  
+        //x icon in searchBar
+        Image image7 = new Image("file:res/xIcon.png");
+        //Image image7 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\xIcon.png"));  
         ImageView x = new ImageView(image7);
-        x.setFitWidth(30);
-        x.setFitHeight(30);
+        x.setFitWidth(40);
+        x.setFitHeight(40);
         Button xBtn = new Button();
         xBtn.setGraphic(x);
-        xBtn.getStyleClass().addAll("transparent-background-btn");
+        xBtn.getStyleClass().addAll("transparent-background");
         xBtn.setPickOnBounds(true);
+
         HBox h = new HBox(xBtn, searchButton); 
         h.setSpacing(0);
         //h.setAlignment(Pos.BASELINE_RIGHT);

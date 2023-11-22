@@ -45,12 +45,12 @@ public class Search extends Application {
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
 
-        // background image
-        Image image2 = new Image(
-                new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\shipcool.png"));
+        //background image
+        Image image2 = new Image("file:res/shipcool.png");
+        //Image image2 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\shipcool.png"));  
         ImageView backImage = new ImageView(image2);
         backImage.setFitWidth(1540);
-        backImage.setFitHeight(785);
+        backImage.setFitHeight(785); 
 
         VBox searchAndBtns = new SearchBarAndButtonsHelper().createBar();
         // searchAndBtns.setSpacing(5.0);
@@ -121,11 +121,12 @@ public class Search extends Application {
                 new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"));
         tableView.setItems(items);
 
-        //x icon in filter button
-        Image image7 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\xIcon.png"));  
+        //x icon in filter tags
+        Image image7 = new Image("file:res/xIcon.png");
+        //Image image7 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\xIcon.png"));  
         ImageView x = new ImageView(image7);
-        x.setFitWidth(15);
-        x.setFitHeight(15);
+        x.setFitWidth(40);
+        x.setFitHeight(40);
         Button xBtn = new Button();
         xBtn.setGraphic(x);
         xBtn.getStyleClass().addAll("transparent-background");

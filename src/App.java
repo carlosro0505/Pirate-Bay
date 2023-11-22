@@ -29,19 +29,22 @@ public class App extends Application {
         Rectangle2D bounds = screen.getVisualBounds();
 
         //image logo pirate
-        Image image = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\pirateLogo3.png"));  
+        //Image image = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\pirateLogo3.png"));  
+        Image image = new Image("file:res/pirateLogo3.png");
         ImageView imageView = new ImageView(image);
         imageView.setPreserveRatio(true);  
         imageView.setFitHeight(260); 
 
        //background image
-        Image image2 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\shipcool.png"));  
+        Image image2 = new Image("file:res/shipcool.png");
+        //Image image2 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\shipcool.png"));  
         ImageView backImage = new ImageView(image2);
         backImage.setFitWidth(1540);
         backImage.setFitHeight(785); 
 
         //x icon in searchBar
-        Image image7 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\xIcon.png"));  
+        Image image7 = new Image("file:res/xIcon.png");
+        //Image image7 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\xIcon.png"));  
         ImageView x = new ImageView(image7);
         x.setFitWidth(40);
         x.setFitHeight(40);
@@ -51,7 +54,8 @@ public class App extends Application {
         xBtn.setPickOnBounds(true);
 
         //portal: buttons that move you on the webpage to four functions 
-        Image image3 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\magnGlass.png"));  
+        Image image3 = new Image("file:res/magnGlass.png");
+        //Image image3 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\magnGlass.png"));  
         ImageView magniGlass = new ImageView(image3);
         magniGlass.setFitWidth(30);
         magniGlass.setFitHeight(37);
@@ -59,21 +63,21 @@ public class App extends Application {
         magnBtn.setGraphic(magniGlass);
         magnBtn.getStyleClass().addAll("portals", "sBtn");
         //magnBtn.setMinSize(25,25);
-        Image image4 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\recents.png"));  
+        Image image4 = new Image("file:res/recents.png");  
         ImageView recents = new ImageView(image4);
         recents.setFitWidth(30);
         recents.setFitHeight(37);
         Button recBtn = new Button();
         recBtn.setGraphic(recents);
         recBtn.getStyleClass().addAll("portals", "recBtn");
-        Image image5 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\categories.png"));  
+        Image image5 = new Image("file:res/categories.png");  
         ImageView categories = new ImageView(image5);
         categories.setFitWidth(30);
         categories.setFitHeight(37);
         Button catBtn = new Button();
         catBtn.setGraphic(categories);
         catBtn.getStyleClass().addAll("portals", "browseBtn");
-        Image image6 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\fire.png"));  
+        Image image6 = new Image("file:res/fire.png");  
         ImageView fire = new ImageView(image6);
         fire.setFitWidth(30);
         fire.setFitHeight(37);
