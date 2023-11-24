@@ -119,6 +119,8 @@ public class Categories extends Application{
         StackPane.setAlignment(h, Pos.CENTER_RIGHT);
         StackPane.setMargin(h, new Insets(5, 0, 0, 0)); // Add space below the search bar
         searchStack.setMaxWidth(1275); // Set a maximum width
+        //searchStack.getStyleClass().add("anchor-pane");
+        StackPane.setMargin(h, new Insets(0,-(0.08 * bounds.getWidth()),0,0));
 
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.trim().isEmpty()) {
