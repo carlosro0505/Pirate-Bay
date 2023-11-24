@@ -169,3 +169,53 @@
     -fx-border-radius: 5;
     -fx-padding: 0 15px 0 15px; /* Add left padding to the prompt text */
 }
+
+.left-top-corner {
+    -fx-background-color: #161617;
+    -fx-padding: 10px; /* Add padding for spacing */
+}
+
+.horizontal-lane {
+    -fx-background-color: #ffcc00; /* Choose your preferred color */
+}
+
+.data-table {
+    -fx-background-color: #302c34;
+    -fx-text-fill: #d6d4d4;
+    -fx-font-family: "Verdana";
+    -fx-font-size: 14px;
+}
+
+.main-pane {
+    -fx-background-color: #161617; /* Set the background color for the entire content */
+}
+
+.separator {
+    -fx-background-color: rgb(255, 0, 0); /* Change the color as needed */
+}
+
+.no-header .column-header-background {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.no-header .column-header {
+    -fx-background-color: transparent;
+}
+
+.no-header .table-row-cell {
+    -fx-border-color: transparent;
+}
+
+.table-cell {
+    -fx-padding: 0.5em;
+}
+
+.hyperlink {
+    -fx-text-fill: blue;
+    -fx-underline: true;
+}
+
+.hyperlink:visited {
+    -fx-text-fill: purple;
+}
