@@ -53,13 +53,15 @@ public class Search extends Application {
         backImage.setFitHeight(785); 
 
         VBox searchAndBtns = new SearchBarAndButtonsHelper().createBar();
+        searchAndBtns.getStyleClass().add("search-page-contrast");
+        searchAndBtns.setPrefHeight(250);
         // searchAndBtns.setSpacing(5.0);
         searchAndBtns.setAlignment(Pos.CENTER);
 
         TableView<Data> tableView = new TableView<>();
-        tableView.setPrefWidth(0.80 * bounds.getWidth()); // Set the preferred width
+        tableView.setPrefWidth(0.83 * bounds.getWidth()); // Set the preferred width
         tableView.getStyleClass().add("table-view");
-        tableView.setPrefHeight(0.77 * bounds.getHeight());
+        tableView.setPrefHeight(0.66 * bounds.getHeight());
         // gets rid of the extra space in the table horizontally (extra column)
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -120,6 +122,8 @@ public class Search extends Application {
                 new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny"),
                 new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"));
         tableView.setItems(items);
+        tableView.setPadding(new Insets(10, 10, 0, 10)); // Set padding for the VBox
+
 
         //x icon in filter tags
         Image image7 = new Image("file:res/xIcon.png");
@@ -139,13 +143,12 @@ public class Search extends Application {
         StackPane.setAlignment(xBtn, Pos.CENTER_RIGHT);
         StackPane.setMargin(xBtn, new Insets(0,0,0,filter.getWidth()));
         filterStack.setMaxWidth(filter.getWidth()); // Set a maximum width
+        filterStack.setVisible(false);
+        //filterStack.setPadding(new Insets(2, 0, 0, 0)); // Set padding for the VBox
 
         VBox filterAndTable = new VBox(filterStack, tableView);
         filterAndTable.setSpacing(20);
-        filterAndTable.setPadding(new Insets(0, 10, 0, 0)); // Set padding for the VBox
-
-        filterStack.setVisible(false);
-
+        
         ComboBox<String> audioBox = new ComboBox<>();
         audioBox.setItems(FXCollections.observableArrayList("All Audio", "Music", "Audio Books", "Sound Clips", "Flac", "Other"));
         audioBox.setValue("Audio");  // Optional: Set a default value
@@ -219,10 +222,11 @@ public class Search extends Application {
         root.getStyleClass().add("search-background");
         AnchorPane.setTopAnchor(filterAndTable, 200.0);
         AnchorPane.setLeftAnchor(filterAndTable, 270.0);
-        AnchorPane.setTopAnchor(searchAndBtns, 0.025 * bounds.getHeight());
+        //        AnchorPane.setTopAnchor(searchAndBtns, 0.025 * bounds.getHeight());
+        AnchorPane.setTopAnchor(searchAndBtns, 0.0);
         AnchorPane.setLeftAnchor(searchAndBtns, 0.0);
         AnchorPane.setRightAnchor(searchAndBtns, 0.0);
-        AnchorPane.setTopAnchor(filterBox, 200.0);
+        AnchorPane.setTopAnchor(filterBox, 250.0);
         // System.out.println(bounds.getHeight());
         // System.out.println(bounds.getWidth());
 

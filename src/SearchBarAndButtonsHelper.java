@@ -12,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
-import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
 //this class should be called whenever the search bar and buttons needs to be used 
@@ -22,6 +21,12 @@ public class SearchBarAndButtonsHelper {
     public static VBox createBar() throws FileNotFoundException{
          Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
+
+         //logo image
+         Image image = new Image("file:res/pirateLogo3.png");
+         ImageView imageView = new ImageView(image);
+         imageView.setPreserveRatio(true);  
+         imageView.setFitHeight(150); 
         
         // Top: Search Bar
         //made the height and other elements scale by 0.75 compared to App.java 
@@ -178,10 +183,15 @@ public class SearchBarAndButtonsHelper {
         //hbox for button portals
         HBox portal = new HBox(magn, cat, rec, fireV);
         portal.setSpacing(0.063 * bounds.getHeight());
-        portal.setAlignment(Pos.CENTER);
+        HBox logoAndPortal = new HBox(imageView, portal);
+        logoAndPortal.setSpacing(0.05 * bounds.getWidth());
+        logoAndPortal.setPadding(new Insets(0, 10, 0, 10)); // Set padding for the VBox
 
-        VBox searchAndBtns = new VBox(portal, searchStack);
-        searchAndBtns.setSpacing(20.0);
+        portal.setAlignment(Pos.CENTER);
+        logoAndPortal.setAlignment(Pos.CENTER_LEFT); 
+
+        VBox searchAndBtns = new VBox(logoAndPortal, searchStack);
+        searchAndBtns.setSpacing(0.0);
         searchAndBtns.setAlignment(Pos.CENTER); 
 
         return searchAndBtns;
