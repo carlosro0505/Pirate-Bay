@@ -220,8 +220,3 @@
 .hyperlink:visited {
     -fx-text-fill: purple;
 }
-
-
-.search-page-contrast{
-    -fx-background-color: #100c0c;
-}
