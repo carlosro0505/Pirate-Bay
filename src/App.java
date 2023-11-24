@@ -219,7 +219,7 @@ public class App extends Application {
 
         root.getChildren().addAll(backImage, imageView, searchAndBtns);
         //Scene scene = new Scene(root, 1540, 785);
-        Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
+        Scene scene = new Scene(root, 1540, 785);
         SceneManager.setPrimaryStage(primaryStage);
         primaryStage.setOnShown(event -> searchBar.requestFocus());
 
@@ -227,10 +227,11 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Stack Search Button on Top");
         primaryStage.show();
+        System.out.println(bounds.getWidth());
+        System.out.println(bounds.getHeight());
     }
 
     public static void main(String[] args) {
         launch(args);
     }
 }
-

@@ -1,0 +1,52 @@
+/* Add this to your styles.css file */
+
+/* Style for the left-top corner */
+.left-top-corner {
+    -fx-background-color: #333333;
+    -fx-padding: 10;
+}
+
+/* Style for the horizontal lane */
+.horizontal-lane {
+    -fx-background-color: #666666;
+}
+
+/* Style for the portal buttons */
+.portals {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-padding: 10;
+    -fx-font-size: 14;
+}
+
+/* Style for the search bar */
+.search-bar {
+    -fx-background-color: #f0f0f0;
+    -fx-font-size: 16;
+}
+
+/* Style for the search button */
+.search-btn {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-padding: 10;
+}
+
+/* Style for the table view */
+.table-view {
+    -fx-control-inner-background: #f0f0f0;
+    -fx-table-cell-border-color: #666666;
+}
+
+/* Style for the main pane */
+.main-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 10;
+}
+
+/* Style for the go back hyperlink */
+.hyperlink {
+    -fx-text-fill: #4CAF50;
+    -fx-font-size: 14;
+}

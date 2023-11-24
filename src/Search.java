@@ -57,7 +57,7 @@ public class Search extends Application {
         searchAndBtns.setAlignment(Pos.CENTER);
 
         TableView<Data> tableView = new TableView<>();
-        tableView.setPrefWidth(0.82 * bounds.getWidth()); // Set the preferred width
+        tableView.setPrefWidth(0.80 * bounds.getWidth()); // Set the preferred width
         tableView.getStyleClass().add("table-view");
         tableView.setPrefHeight(0.77 * bounds.getHeight());
         // gets rid of the extra space in the table horizontally (extra column)
@@ -125,8 +125,8 @@ public class Search extends Application {
         Image image7 = new Image("file:res/xIcon.png");
         //Image image7 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\xIcon.png"));  
         ImageView x = new ImageView(image7);
-        x.setFitWidth(40);
-        x.setFitHeight(40);
+        x.setFitWidth(20);
+        x.setFitHeight(20);
         Button xBtn = new Button();
         xBtn.setGraphic(x);
         xBtn.getStyleClass().addAll("transparent-background");
@@ -142,10 +142,10 @@ public class Search extends Application {
 
         VBox filterAndTable = new VBox(filterStack, tableView);
         filterAndTable.setSpacing(20);
+        filterAndTable.setPadding(new Insets(0, 10, 0, 0)); // Set padding for the VBox
 
         filterStack.setVisible(false);
 
-        
         ComboBox<String> audioBox = new ComboBox<>();
         audioBox.setItems(FXCollections.observableArrayList("All Audio", "Music", "Audio Books", "Sound Clips", "Flac", "Other"));
         audioBox.setValue("Audio");  // Optional: Set a default value
@@ -175,6 +175,10 @@ public class Search extends Application {
         VBox filterBox = new VBox(audioBox, videoBox, appsBox, gamesBox, otherBox);
         filterBox.setSpacing(0);
         filterBox.setPrefWidth(270);
+        filterBox.setPrefHeight(1000);
+        filterBox.setPadding(new Insets(0, 10, 0, 10)); // Set padding for the VBox
+        filterBox.getStyleClass().add("search-page-contrast");
+
 
         //listener for combo boxes
         audioBox.setOnAction(event -> {
