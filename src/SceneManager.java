@@ -19,8 +19,8 @@ public class SceneManager {
         item.start(primaryStage);
     }
 
-    public static void showSearchScene() throws FileNotFoundException {
-        Search search = new Search(primaryStage);
+    public static void showSearchScene(String searchString) throws FileNotFoundException {
+        Search search = new Search(primaryStage, searchString);
         search.start(primaryStage);
     }
     

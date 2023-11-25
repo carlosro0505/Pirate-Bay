@@ -35,12 +35,10 @@ public class FileParser {
                     components[3], // size
                     components[4], // SE
                     components[5], // LE
-                    components[6]  // uploadBy
+                    components[6],  // uploadBy
+                    components[7], // description
+                    Integer.parseInt(components[8])  // ID
             );
-
-            // Set additional properties
-            data.setDescription(components[7]);
-            data.setID(Integer.parseInt(components[8]));
 
             // Add the Data object to the list
             dataList.add(data);

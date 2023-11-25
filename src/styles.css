@@ -138,7 +138,7 @@
 /* -fx-background-color: #100c0c; for the back contrast*/
 
 .combo-box .arrow-button {
-    -fx-background-image: url("C:/Users/carlo/OneDrive/Desktop/Pirate Bay/res/expand_arrow");
+    /*-fx-background-image: url("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\expand_arrow.png");
     -fx-background-repeat: no-repeat;
    /* -fx-background-position: center right; */
     -fx-background-size: 16 16; /* Adjust the size of your custom icon */

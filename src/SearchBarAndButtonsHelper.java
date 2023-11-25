@@ -18,7 +18,7 @@ import javafx.scene.control.TextField;
 //returns vbox object
 
 public class SearchBarAndButtonsHelper {
-    public static VBox createBar() throws FileNotFoundException{
+    public static VBox createBar(String searchString) throws FileNotFoundException{
          Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
 
@@ -31,6 +31,7 @@ public class SearchBarAndButtonsHelper {
         // Top: Search Bar
         //made the height and other elements scale by 0.75 compared to App.java 
         TextField searchBar = new TextField();
+        searchBar.setText(searchString);
         Button searchButton = new Button(" Search ");
         searchBar.setPromptText("Pirate Search");
         //searchBar.setPrefWidth(775);
@@ -127,7 +128,7 @@ public class SearchBarAndButtonsHelper {
         searchButton.setOnAction(event -> {
             if(!searchBar.getText().equals("")){
                 try {
-                    SceneManager.showSearchScene();
+                    SceneManager.showSearchScene(searchBar.getText());
                 } catch (FileNotFoundException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -179,7 +180,7 @@ public class SearchBarAndButtonsHelper {
         searchButton.setOnAction(event -> {
             if(!searchBar.getText().equals("")){
                 try {
-                    SceneManager.showSearchScene();
+                    SceneManager.showSearchScene("");
                 } catch (FileNotFoundException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -194,7 +195,9 @@ public class SearchBarAndButtonsHelper {
         ScaleTransitionHelper.createScaleTransition(recBtn, recLabel);
 
         // Initial state: hide the search button
-        h.setVisible(false); 
+        if(searchBar.getText().equals("")){
+            h.setVisible(false); 
+        }
 
         //hbox for button portals
         HBox portal = new HBox(magn, cat, rec, fireV);

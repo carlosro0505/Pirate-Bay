@@ -20,29 +20,18 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.cell.TextFieldListCell;
-import javafx.stage.Stage;
-import javafx.util.StringConverter;
-
-
-
-
 
 public class Search extends Application {
     private Stage primaryStage;
+    private String searchString;
 
-    public Search(Stage primaryStage) {
+    public Search(Stage primaryStage, String searchString) {
         this.primaryStage = primaryStage;
+        this.searchString = searchString;
     }
 
     @Override
@@ -57,7 +46,7 @@ public class Search extends Application {
         backImage.setFitWidth(1540);
         backImage.setFitHeight(785); 
 
-        VBox searchAndBtns = new SearchBarAndButtonsHelper().createBar();
+        VBox searchAndBtns = new SearchBarAndButtonsHelper().createBar(searchString);
         searchAndBtns.getStyleClass().add("search-page-contrast");
         searchAndBtns.setPrefHeight(250);
         // searchAndBtns.setSpacing(5.0);
@@ -169,7 +158,7 @@ public class Search extends Application {
         //filterStack.setPadding(new Insets(2, 0, 0, 0)); // Set padding for the VBox
 
         VBox filterAndTable = new VBox(filterStack, tableView);
-        filterAndTable.setSpacing(20);
+        filterAndTable.setSpacing(2);
         
         ComboBox<String> audioBox = new ComboBox<>();
         audioBox.setItems(FXCollections.observableArrayList("All Audio", "Music", "Audio Books", "Sound Clips", "Flac", "Other"));
@@ -242,7 +231,7 @@ public class Search extends Application {
 
         AnchorPane root = new AnchorPane();
         root.getStyleClass().add("search-background");
-        AnchorPane.setTopAnchor(filterAndTable, 200.0);
+        AnchorPane.setTopAnchor(filterAndTable, 225.0);
         AnchorPane.setLeftAnchor(filterAndTable, 270.0);
         //        AnchorPane.setTopAnchor(searchAndBtns, 0.025 * bounds.getHeight());
         AnchorPane.setTopAnchor(searchAndBtns, 0.0);

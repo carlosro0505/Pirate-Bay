@@ -135,7 +135,7 @@ public class Categories extends Application{
         searchButton.setOnAction(event -> {
             if (!searchBar.getText().equals("")) {
                 try {
-                    SceneManager.showSearchScene();
+                    SceneManager.showSearchScene("");
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }

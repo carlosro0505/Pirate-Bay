@@ -11,16 +11,20 @@ public class Data {
             private int ID;
 
             // Constructor
-            public Data(String category, String name, String date, String size, String SE, String LE, String uploadBy) {
-                this.category = category;
-                this.name = name;
+            public Data(String category, String name, String date, String size, String SE, String LE, String uploadBy, String description, int ID) {
+                this.category = removeUnderscores(category);
+                this.name = removeUnderscores(name);
                 this.date = date;
-                this.size = size;
+                this.size = removeUnderscores(size);
                 this.SE = SE;
                 this.LE = LE;
-                this.uploadBy = uploadBy;
-                this.description = "";
-                this.ID = 1;
+                this.uploadBy = removeUnderscores(uploadBy);
+                this.description = description;
+                this.ID = ID;
+            }
+
+            private String removeUnderscores(String input) {
+                return input.replace("_", " ");
             }
         
             // Getters and Setters
