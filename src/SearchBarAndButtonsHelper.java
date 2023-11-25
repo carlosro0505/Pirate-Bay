@@ -171,22 +171,6 @@ public class SearchBarAndButtonsHelper {
             e.printStackTrace();
         }
         });
-        
-        //event handler for x button
-        xBtn.setOnAction(event -> {
-            searchBar.setText("");
-        });     
-        //event handler for search button
-        searchButton.setOnAction(event -> {
-            if(!searchBar.getText().equals("")){
-                try {
-                    SceneManager.showSearchScene("");
-                } catch (FileNotFoundException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            } 
-        }); 
      
         //make the buttons pop when hovering over them
         ScaleTransitionHelper.createScaleTransition(magnBtn, magnLabel);

@@ -131,8 +131,15 @@ public class Search extends Application {
         uplColumn.getStyleClass().add("table-view");
 
         tableView.getColumns().addAll(catColumn, nameColumn, dateColumn, sizeColumn, SEColumn, LEColumn, uplColumn);
+        if(!searchString.equals("")){
+            ObservableList<Data> items = FXCollections.observableArrayList(SearchEngine.search(FileParser.parseData(), searchString));
+                    tableView.setItems(items);
+        }
+        else{
         ObservableList<Data> items = FXCollections.observableArrayList(FileParser.parseData());
-        tableView.setItems(items);
+                tableView.setItems(items);
+
+        }
         tableView.setPadding(new Insets(10, 10, 0, 10)); // Set padding for the VBox
 
 
