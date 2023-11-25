@@ -14,8 +14,8 @@ public class SceneManager {
         categories.start(primaryStage);
     }
 
-    public static void showItemsScene() throws FileNotFoundException {
-        Item item = new Item(primaryStage);
+    public static void showItemsScene(Data data) throws FileNotFoundException {
+        Item item = new Item(primaryStage, data);
         item.start(primaryStage);
     }
 

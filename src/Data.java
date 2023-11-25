@@ -86,7 +86,7 @@ public class Data {
             }
         
             public void setDescription(String description) {
-                this.category = description;
+                this.description = description;
             }
 
             public int getID() {

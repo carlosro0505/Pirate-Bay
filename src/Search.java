@@ -1,5 +1,6 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -84,26 +85,48 @@ public class Search extends Application {
         TableColumn<Data, Hyperlink> uplColumn = new TableColumn<>("Uploaded By");
 
         catColumn.setCellValueFactory(cellData -> {
-        Hyperlink link = new Hyperlink(cellData.getValue().getDate());
+        Data data = cellData.getValue();
+        Hyperlink link = new Hyperlink(data.getCategory());
         link.getStyleClass().add("hyperlink-carlos");
-        link.setOnAction(event -> handleLinkClick(cellData.getValue().getDate()));
-        return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
-    });
-        nameColumn.setCellValueFactory(cellData -> {
-        Hyperlink link = new Hyperlink(cellData.getValue().getName());
-        link.getStyleClass().add("hyperlink-carlos");
-        link.setOnAction(event -> handleLinkClick(cellData.getValue().getDate()));
-        return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
-    });
-    uplColumn.setCellValueFactory(cellData -> {
-        Hyperlink link = new Hyperlink(cellData.getValue().getUploadBy());
-        link.getStyleClass().add("hyperlink-carlos");
-        link.setOnAction(event -> handleLinkClick(cellData.getValue().getDate()));
+        link.setOnAction(event -> {
+            try {
+                handleLinkClick(data.getID());
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        });
         return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
     });
 
-
-
+    nameColumn.setCellValueFactory(cellData -> {
+        Data data = cellData.getValue();
+        Hyperlink link = new Hyperlink(data.getName());
+        link.getStyleClass().add("hyperlink-carlos");
+        link.setOnAction(event -> {
+            try {
+                handleLinkClick(data.getID());
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        });
+        return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
+    });
+     uplColumn.setCellValueFactory(cellData -> {
+        Data data = cellData.getValue();
+        Hyperlink link = new Hyperlink(data.getUploadBy());
+        link.getStyleClass().add("hyperlink-carlos");
+        link.setOnAction(event -> {
+            try {
+                handleLinkClick(data.getID());
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        });
+        return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
+    });
        
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
@@ -119,31 +142,7 @@ public class Search extends Application {
         uplColumn.getStyleClass().add("table-view");
 
         tableView.getColumns().addAll(catColumn, nameColumn, dateColumn, sizeColumn, SEColumn, LEColumn, uplColumn);
-        ObservableList<Data> items = FXCollections.observableArrayList(
-                new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"),
-                new Data("song", "Star ", "11/19/20df23", "12 dGb", "21d", "d42", "dJohnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"),
-                new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"),
-                new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"),
-                new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"),
-                new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21",  "42", "greg"),
-                new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"),
-                new Data("song", "Star ", "11/19/20df23", "12 dGb", "21d", "d42", "dJohnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"),
-                new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"),
-                new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"),
-                new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"),
-                new Data("Movies", "Star Wars", "11/19/2023", "12 Gb", "21", "42", "Johnny"),
-                new Data("Games", "Halo", "11/18/2023", "112 Gb", "21", "42", "greg"));
+        ObservableList<Data> items = FXCollections.observableArrayList(FileParser.parseData());
         tableView.setItems(items);
         tableView.setPadding(new Insets(10, 10, 0, 10)); // Set padding for the VBox
 
@@ -269,9 +268,16 @@ public class Search extends Application {
         primaryStage.close();
     }
 
-        private void handleLinkClick(String valueString) {
-        // Handle the link click event (e.g., open a new scene or perform some action)
-        System.out.println("Link clicked: " + valueString);
+    private void handleLinkClick(int clickedID) throws FileNotFoundException {
+        List<Data> dataList = FileParser.parseData();
+    
+        for (Data data : dataList) {
+            if (data.getID() == clickedID) {
+                // Found the associated ID, do something with the data
+                SceneManager.showItemsScene(data);
+                break;  // Exit the loop since we found the data
+            }
+        }
     }
 
 }

@@ -175,7 +175,8 @@ public class App extends Application {
         //event handler for "Search Torrents" buttons
         magnBtn.setOnAction(event -> {
             try {
-            SceneManager.showItemsScene();
+                //placeholder
+            SceneManager.showCategoriesScene();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

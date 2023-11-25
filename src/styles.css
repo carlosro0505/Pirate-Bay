@@ -224,3 +224,8 @@
 .hyperlink:visited {
     -fx-text-fill: purple;
 }
+
+.hyperlink-carlos{
+    -fx-text-fill: #29b4a6;
+    -fx-underline: true;
+}

@@ -170,6 +170,22 @@ public class SearchBarAndButtonsHelper {
             e.printStackTrace();
         }
         });
+        
+        //event handler for x button
+        xBtn.setOnAction(event -> {
+            searchBar.setText("");
+        });     
+        //event handler for search button
+        searchButton.setOnAction(event -> {
+            if(!searchBar.getText().equals("")){
+                try {
+                    SceneManager.showSearchScene();
+                } catch (FileNotFoundException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            } 
+        }); 
      
         //make the buttons pop when hovering over them
         ScaleTransitionHelper.createScaleTransition(magnBtn, magnLabel);
@@ -185,7 +201,7 @@ public class SearchBarAndButtonsHelper {
         portal.setSpacing(0.063 * bounds.getHeight());
         HBox logoAndPortal = new HBox(imageView, portal);
         logoAndPortal.setSpacing(0.04 * bounds.getWidth());
-        logoAndPortal.setPadding(new Insets(0, 10, 0, 10)); // Set padding for the VBox
+        logoAndPortal.setPadding(new Insets(0, 15, 0, 15)); // Set padding for the VBox
 
         portal.setAlignment(Pos.CENTER);
         logoAndPortal.setAlignment(Pos.CENTER_LEFT); 
