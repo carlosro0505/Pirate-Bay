@@ -184,7 +184,7 @@ public class SearchBarAndButtonsHelper {
         HBox portal = new HBox(magn, cat, rec, fireV);
         portal.setSpacing(0.063 * bounds.getHeight());
         HBox logoAndPortal = new HBox(imageView, portal);
-        logoAndPortal.setSpacing(0.05 * bounds.getWidth());
+        logoAndPortal.setSpacing(0.04 * bounds.getWidth());
         logoAndPortal.setPadding(new Insets(0, 10, 0, 10)); // Set padding for the VBox
 
         portal.setAlignment(Pos.CENTER);

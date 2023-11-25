@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -31,6 +32,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+
+
+
 
 
 public class Search extends Application {
@@ -71,21 +75,40 @@ public class Search extends Application {
 
         // tableView.setStyle("-fx-background-color: #22bad9; -fx-text-fill: #d6d4d4;");
         // the second value here sets what time the column takes in as input
-        TableColumn<Data, String> catColumn = new TableColumn<>("Categories");
-        TableColumn<Data, String> nameColumn = new TableColumn<>("Name");
+        TableColumn<Data, Hyperlink> catColumn = new TableColumn<>("Categories");
+        TableColumn<Data, Hyperlink> nameColumn = new TableColumn<>("Name");
         TableColumn<Data, String> dateColumn = new TableColumn<>("Uploaded On");
         TableColumn<Data, String> sizeColumn = new TableColumn<>("Size");
         TableColumn<Data, String> SEColumn = new TableColumn<>("SE");
         TableColumn<Data, String> LEColumn = new TableColumn<>("LE");
-        TableColumn<Data, String> uplColumn = new TableColumn<>("Uploaded By");
+        TableColumn<Data, Hyperlink> uplColumn = new TableColumn<>("Uploaded By");
 
-        catColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        catColumn.setCellValueFactory(cellData -> {
+        Hyperlink link = new Hyperlink(cellData.getValue().getDate());
+        link.getStyleClass().add("hyperlink-carlos");
+        link.setOnAction(event -> handleLinkClick(cellData.getValue().getDate()));
+        return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
+    });
+        nameColumn.setCellValueFactory(cellData -> {
+        Hyperlink link = new Hyperlink(cellData.getValue().getName());
+        link.getStyleClass().add("hyperlink-carlos");
+        link.setOnAction(event -> handleLinkClick(cellData.getValue().getDate()));
+        return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
+    });
+    uplColumn.setCellValueFactory(cellData -> {
+        Hyperlink link = new Hyperlink(cellData.getValue().getUploadBy());
+        link.getStyleClass().add("hyperlink-carlos");
+        link.setOnAction(event -> handleLinkClick(cellData.getValue().getDate()));
+        return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
+    });
+
+
+
+       
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
         SEColumn.setCellValueFactory(new PropertyValueFactory<>("SE"));
         LEColumn.setCellValueFactory(new PropertyValueFactory<>("LE"));
-        uplColumn.setCellValueFactory(new PropertyValueFactory<>("uploadBy"));
 
         catColumn.getStyleClass().add("table-view");
         nameColumn.getStyleClass().add("table-view");
@@ -245,5 +268,11 @@ public class Search extends Application {
     public void closePrimaryStage() {
         primaryStage.close();
     }
+
+        private void handleLinkClick(String valueString) {
+        // Handle the link click event (e.g., open a new scene or perform some action)
+        System.out.println("Link clicked: " + valueString);
+    }
+
 }
 

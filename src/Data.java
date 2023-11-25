@@ -7,7 +7,9 @@ public class Data {
             private String SE;
             private String LE;
             private String uploadBy;
-        
+            private String description;
+            private int ID;
+
             // Constructor
             public Data(String category, String name, String date, String size, String SE, String LE, String uploadBy) {
                 this.category = category;
@@ -17,6 +19,8 @@ public class Data {
                 this.SE = SE;
                 this.LE = LE;
                 this.uploadBy = uploadBy;
+                this.description = "";
+                this.ID = 1;
             }
         
             // Getters and Setters
@@ -75,5 +79,21 @@ public class Data {
         
             public void setUploadBy(String uploadBy) {
                 this.uploadBy = uploadBy;
+            }
+
+            public String getDescription() {
+                return description;
+            }
+        
+            public void setDescription(String description) {
+                this.category = description;
+            }
+
+            public int getID() {
+                return ID;
+            }
+        
+            public void setID(int ID) {
+                this.ID = ID;
             }
         }
