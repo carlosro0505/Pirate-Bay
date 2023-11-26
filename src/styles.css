@@ -226,7 +226,8 @@
 
 .hyperlink-carlos{
     -fx-text-fill: #29b4a6;
-    -fx-underline: true;
+    -fx-font-size: 15px;
+    -fx-alignment: CENTER;
 }
 
 .hbox{

@@ -124,11 +124,18 @@ public class Search extends Application {
         tableView.getColumns().addAll(catColumn, nameColumn, dateColumn, sizeColumn, SEColumn, LEColumn, uplColumn);
         //if search is not empty
         if(!searchString.equals("")){
-            //if there are not filters; if there is a string and no filter
-            if(filter.getText().equals("")){
+            //first check if a person clicked a username
+            //don't forget to make function get rid of filter
+            if(searchString.contains("user: ")){
+                ObservableList<Data> items = FXCollections.observableArrayList(SearchEngine.browseByUser(FileParser.parseData(), searchString.replace("user: ", "")));
+                tableView.setItems(items);
+            }
+            //if there are not filters; if there is a string and no filter; (filter.getText().equals(""))
+            else{
                 ObservableList<Data> items = FXCollections.observableArrayList(SearchEngine.search(FileParser.parseData(), searchString));
                 tableView.setItems(items);
             }
+            
         }
         //else: searchString is empty
         else{
@@ -346,13 +353,14 @@ public class Search extends Application {
         }
     }
 
+    //if user clicks the username 
     private void handleLinkUplClick(int clickedID) throws FileNotFoundException {
         List<Data> dataList = FileParser.parseData();
     
         for (Data data : dataList) {
             if (data.getID() == clickedID) {
                 // Found the associated ID, do something with the data
-                SceneManager.showItemsScene(data);
+                SceneManager.showSearchScene("user: " + data.getUploadBy(), "");
                 break;  // Exit the loop since we found the data
             }
         }

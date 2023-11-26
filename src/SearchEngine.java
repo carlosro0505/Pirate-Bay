@@ -55,6 +55,16 @@ public class SearchEngine {
         return searchResults;
     }
 
+    public static List<Data> browseByUser(List<Data> dataList, String userName) {
+        List<Data> searchResults = new ArrayList<>();
+
+        for (Data data : dataList) {
+            if (data.getUploadBy().contains(userName)) 
+                searchResults.add(data);
+        }
+        return searchResults;
+    }
+
     public static List<Data> recent(List<Data> dataList) {
         List<Data> searchResults = new ArrayList<>(dataList);
 
