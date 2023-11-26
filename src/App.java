@@ -13,12 +13,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.event.EventHandler;
+
 
 public class App extends Application {
 
@@ -182,6 +186,13 @@ public class App extends Application {
             e.printStackTrace();
         }
         });        
+        // Event handler for Enter key press in the text field
+        searchBar.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+            // Simulate a button click when Enter key is pressed
+            searchButton.fire();
+        }
+        });
 
         //make the buttons pop when hovering over them
         ScaleTransitionHelper.createScaleTransition(magnBtn, magnLabel);
@@ -219,8 +230,10 @@ public class App extends Application {
         }); 
 
         root.getChildren().addAll(backImage, imageView, searchAndBtns);
-        //Scene scene = new Scene(root, 1540, 785);
-        Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
+        Scene scene = new Scene(root, 1540, 785);
+        System.out.println("H: " + bounds.getHeight());
+        System.out.println("W: " + bounds.getWidth());
+        //Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
         SceneManager.setPrimaryStage(primaryStage);
         primaryStage.setOnShown(event -> searchBar.requestFocus());
 

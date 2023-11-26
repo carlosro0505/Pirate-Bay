@@ -57,9 +57,9 @@ public class Search extends Application {
         searchAndBtns.setAlignment(Pos.CENTER);
 
         TableView<Data> tableView = new TableView<>();
-        tableView.setPrefWidth(0.83 * bounds.getWidth()); // Set the preferred width
+        tableView.setPrefWidth(1274); // Set the preferred width
         tableView.getStyleClass().add("table-view");
-        tableView.setPrefHeight(0.66 * bounds.getHeight());
+        tableView.setPrefHeight(538.56);
         // gets rid of the extra space in the table horizontally (extra column)
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -332,7 +332,8 @@ public class Search extends Application {
 
         // add tableView after
         root.getChildren().addAll(searchAndBtns, filterAndTable, filterBox);
-        Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
+        Scene scene = new Scene(root, 1540, 785);
+        //Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
         System.out.println(getClass().getResource("styles.css").toExternalForm());
 
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());

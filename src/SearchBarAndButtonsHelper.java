@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -68,8 +69,8 @@ public class SearchBarAndButtonsHelper {
         StackPane.setAlignment(h, Pos.CENTER_RIGHT);
       
         //searchStack.getStyleClass().add("anchor-pane");
-        StackPane.setMargin(h, new Insets(0,-(0.08 * bounds.getWidth()),0,0));
-        searchStack.setMaxWidth(0.98 * bounds.getWidth()); // Set a maximum width
+        StackPane.setMargin(h, new Insets(0,-(122.88),0,0));
+        searchStack.setMaxWidth(1505.28); // Set a maximum width
 
         //portal: buttons that move you on the webpage to four functions 
         Image image3 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\magnGlass.png"));  
@@ -175,6 +176,13 @@ public class SearchBarAndButtonsHelper {
             e.printStackTrace();
         }
         });
+        // Event handler for Enter key press in the text field
+        searchBar.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+            // Simulate a button click when Enter key is pressed
+            searchButton.fire();
+        }
+        });
      
         //make the buttons pop when hovering over them
         ScaleTransitionHelper.createScaleTransition(magnBtn, magnLabel);
@@ -189,9 +197,9 @@ public class SearchBarAndButtonsHelper {
 
         //hbox for button portals
         HBox portal = new HBox(magn, cat, rec, fireV);
-        portal.setSpacing(0.063 * bounds.getHeight());
+        portal.setSpacing(51.408);
         HBox logoAndPortal = new HBox(imageView, portal);
-        logoAndPortal.setSpacing(0.04 * bounds.getWidth());
+        logoAndPortal.setSpacing(61.44);
         logoAndPortal.setPadding(new Insets(0, 15, 0, 15)); // Set padding for the VBox
 
         portal.setAlignment(Pos.CENTER);

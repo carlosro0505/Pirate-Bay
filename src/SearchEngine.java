@@ -19,7 +19,8 @@ public class SearchEngine {
         for (Data data : dataList) {
             if (containsIgnoreCase(data.getName(), searchTerm) ||
                 containsIgnoreCase(data.getDate(), searchTerm) ||
-                containsIgnoreCase(data.getUploadBy(), searchTerm)) {
+                containsIgnoreCase(data.getUploadBy(), searchTerm)||
+                containsIgnoreCase(data.getCategory(), searchTerm)) {
                 searchResults.add(data);
             }
         }
