@@ -138,7 +138,7 @@ public class App extends Application {
         searchButton.setOnAction(event -> {
             if(!searchBar.getText().equals("")){
                 try {
-                    SceneManager.showSearchScene(searchBar.getText());
+                    SceneManager.showSearchScene(searchBar.getText(), "");
                 } catch (FileNotFoundException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

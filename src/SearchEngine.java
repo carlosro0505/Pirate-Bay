@@ -17,6 +17,21 @@ public class SearchEngine {
         return searchResults;
     }
 
+    public static List<Data> classFilter(List<Data> dataList, String searchTerm, String filterString) {
+        List<Data> searchResults = new ArrayList<>();
+
+        for (Data data : dataList) {
+            if ((containsIgnoreCase(data.getName(), searchTerm) && data.getCategory().equals(filterString) )||
+                (containsIgnoreCase(data.getDate(), searchTerm) && data.getCategory().equals(filterString) ) ||
+                (containsIgnoreCase(data.getUploadBy(), searchTerm) && data.getCategory().equals(filterString) )) 
+                {
+                searchResults.add(data);
+            }
+        }
+
+        return searchResults;
+    }
+
     private static boolean containsIgnoreCase(String str, String searchTerm) {
         return str.toLowerCase().contains(searchTerm.toLowerCase());
     }

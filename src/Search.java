@@ -28,10 +28,13 @@ import javafx.scene.control.TableView;
 public class Search extends Application {
     private Stage primaryStage;
     private String searchString;
+    private String filterString;
 
-    public Search(Stage primaryStage, String searchString) {
+
+    public Search(Stage primaryStage, String searchString, String filterString) {
         this.primaryStage = primaryStage;
         this.searchString = searchString;
+        this.filterString=filterString;        
     }
 
     @Override
@@ -46,7 +49,8 @@ public class Search extends Application {
         backImage.setFitWidth(1540);
         backImage.setFitHeight(785); 
 
-        VBox searchAndBtns = new SearchBarAndButtonsHelper().createBar(searchString);
+        SearchBarAndButtonsHelper sb = new SearchBarAndButtonsHelper();
+        VBox searchAndBtns = sb.createBar(searchString, filterString);
         searchAndBtns.getStyleClass().add("search-page-contrast");
         searchAndBtns.setPrefHeight(250);
         // searchAndBtns.setSpacing(5.0);
@@ -60,7 +64,7 @@ public class Search extends Application {
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         //label for filters
-        Label filter = new Label("Filter: movies");
+        Label filter = new Label(filterString);
         filter.getStyleClass().addAll("filter-label");
 
         // tableView.setStyle("-fx-background-color: #22bad9; -fx-text-fill: #d6d4d4;");
@@ -131,14 +135,23 @@ public class Search extends Application {
         uplColumn.getStyleClass().add("table-view");
 
         tableView.getColumns().addAll(catColumn, nameColumn, dateColumn, sizeColumn, SEColumn, LEColumn, uplColumn);
+        //if search is not empty
         if(!searchString.equals("")){
-            ObservableList<Data> items = FXCollections.observableArrayList(SearchEngine.search(FileParser.parseData(), searchString));
-                    tableView.setItems(items);
+            //if there are not filters
+            if(filter.getText().equals("")){
+                ObservableList<Data> items = FXCollections.observableArrayList(SearchEngine.search(FileParser.parseData(), searchString));
+                tableView.setItems(items);
+            }
+            //if there are filters
+            else{
+                ObservableList<Data> items = FXCollections.observableArrayList(SearchEngine.classFilter(FileParser.parseData(), searchString, filter.getText()));
+                tableView.setItems(items);
+            }
         }
+        //if it's empty just display all files I guess
         else{
         ObservableList<Data> items = FXCollections.observableArrayList(FileParser.parseData());
-                tableView.setItems(items);
-
+        tableView.setItems(items);
         }
         tableView.setPadding(new Insets(10, 10, 0, 10)); // Set padding for the VBox
 
@@ -161,6 +174,7 @@ public class Search extends Application {
         StackPane.setAlignment(xBtn, Pos.CENTER_RIGHT);
         StackPane.setMargin(xBtn, new Insets(0,0,0,filter.getWidth()));
         filterStack.setMaxWidth(filter.getWidth()); // Set a maximum width
+        if(filterString.equals(""))
         filterStack.setVisible(false);
         //filterStack.setPadding(new Insets(2, 0, 0, 0)); // Set padding for the VBox
 
@@ -206,34 +220,94 @@ public class Search extends Application {
             String selectedValue = audioBox.getValue();
             filter.setText(selectedValue);
             filterStack.setVisible(true);
+            filterString=selectedValue;
+            sb.setFilterString(filterString);
+            ObservableList<Data> items;
+            try {
+                items = FXCollections.observableArrayList(SearchEngine.classFilter(FileParser.parseData(), searchString, selectedValue));
+                tableView.setItems(items);
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         });
         //listener for combo boxes
         videoBox.setOnAction(event -> {
             String selectedValue = videoBox.getValue();
             filter.setText(selectedValue);
             filterStack.setVisible(true);
+            filterString=selectedValue;
+            sb.setFilterString(filterString);
+            ObservableList<Data> items;
+            try {
+                items = FXCollections.observableArrayList(SearchEngine.classFilter(FileParser.parseData(), searchString, selectedValue));
+                tableView.setItems(items);
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         });
         //listener for combo boxes
         appsBox.setOnAction(event -> {
             String selectedValue = appsBox.getValue();
             filter.setText(selectedValue);
             filterStack.setVisible(true);
+            filterString=selectedValue;
+            sb.setFilterString(filterString);
+            ObservableList<Data> items;
+            try {
+                items = FXCollections.observableArrayList(SearchEngine.classFilter(FileParser.parseData(), searchString, selectedValue));
+                tableView.setItems(items);
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         });
         //listener for combo boxes
         gamesBox.setOnAction(event -> {
             String selectedValue = gamesBox.getValue();
             filter.setText(selectedValue);
             filterStack.setVisible(true);
+            filterString=selectedValue;
+            sb.setFilterString(filterString);
+            ObservableList<Data> items;
+            try {
+                items = FXCollections.observableArrayList(SearchEngine.classFilter(FileParser.parseData(), searchString, selectedValue));
+                tableView.setItems(items);
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         });
         //listener for combo boxes
         otherBox.setOnAction(event -> {
             String selectedValue = otherBox.getValue();
             filter.setText(selectedValue);
             filterStack.setVisible(true);
+            filterString=selectedValue;
+            sb.setFilterString(filterString);
+            ObservableList<Data> items;
+            try {
+                items = FXCollections.observableArrayList(SearchEngine.classFilter(FileParser.parseData(), searchString, selectedValue));
+                tableView.setItems(items);
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         });
         //xBtn listener so the filter is cleared
         xBtn.setOnAction(event -> {
             filterStack.setVisible(false);
+            filterString="";
+            sb.setFilterString(filterString);
+            ObservableList<Data> items;
+            try {
+                items = FXCollections.observableArrayList(SearchEngine.search(FileParser.parseData(), searchString));
+                tableView.setItems(items);
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         });     
 
         AnchorPane root = new AnchorPane();
