@@ -71,38 +71,38 @@ public class SearchBarAndButtonsHelper {
         //searchStack.getStyleClass().add("anchor-pane");
         StackPane.setMargin(h, new Insets(0,-(122.88),0,0));
         searchStack.setMaxWidth(1505.28); // Set a maximum width
-
         //portal: buttons that move you on the webpage to four functions 
-        Image image3 = new Image(new FileInputStream("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\magnGlass.png"));  
+        Image image3 = new Image("file:res/magnGlass.png");
+        //Image image3 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\magnGlass.png"));  
         ImageView magniGlass = new ImageView(image3);
-        magniGlass.setFitWidth(22.5);
-        magniGlass.setFitHeight(27.75);
+        magniGlass.setFitWidth(30);
+        magniGlass.setFitHeight(37);
         Button magnBtn = new Button();
         magnBtn.setGraphic(magniGlass);
-        magnBtn.getStyleClass().addAll("portals-minimized", "sBtn");
+        magnBtn.getStyleClass().addAll("portals", "sBtn");
         //magnBtn.setMinSize(25,25);
-        Image image4 = new Image(new FileInputStream("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\recents.png"));  
+        Image image4 = new Image("file:res/recents.png");  
         ImageView recents = new ImageView(image4);
-        recents.setFitWidth(22.5);
-        recents.setFitHeight(27.75);
+        recents.setFitWidth(30);
+        recents.setFitHeight(37);
         Button recBtn = new Button();
         recBtn.setGraphic(recents);
-        recBtn.getStyleClass().addAll("portals-minimized", "recBtn");
-        Image image5 = new Image(new FileInputStream("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\categories.png"));  
+        recBtn.getStyleClass().addAll("portals", "recBtn");
+        Image image5 = new Image("file:res/categories.png");  
         ImageView categories = new ImageView(image5);
-        categories.setFitWidth(22.5);
-        categories.setFitHeight(27.75);
+        categories.setFitWidth(30);
+        categories.setFitHeight(37);
         Button catBtn = new Button();
         catBtn.setGraphic(categories);
-        catBtn.getStyleClass().addAll("portals-minimized", "browseBtn");
-        Image image6 = new Image(new FileInputStream("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\fire.png"));  
+        catBtn.getStyleClass().addAll("portals", "browseBtn");
+        Image image6 = new Image("file:res/fire.png");  
         ImageView fire = new ImageView(image6);
-        fire.setFitWidth(22.5);
-        fire.setFitHeight(27.75);
+        fire.setFitWidth(30);
+        fire.setFitHeight(37);
         Button fireBtn = new Button();
         fireBtn.setGraphic(fire);
-        fireBtn.getStyleClass().addAll("portals-minimized", "fireBtn");
-
+        fireBtn.getStyleClass().addAll("portals", "fireBtn");
+        
         //4 vboxes to add labels under them
         Label magnLabel = new Label(" Search \nTorrents"); magnLabel.getStyleClass().add("portals");
         Label catLabel = new Label(" Browse \nTorrents"); catLabel.getStyleClass().add("portals");
