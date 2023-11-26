@@ -1,4 +1,9 @@
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+
+import javax.print.DocFlavor.URL;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -9,6 +14,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -34,201 +41,24 @@ public class Categories extends Application{
     }
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws FileNotFoundException {
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
-      
-        //x icon in searchBar
-        Image image7 = new Image("file:res/xIcon.png");
-        ImageView x = new ImageView(image7);
-        x.setFitWidth(40);
-        x.setFitHeight(40);
-        Button xBtn = new Button();
-        xBtn.setGraphic(x);
-        xBtn.getStyleClass().addAll("transparent-background");
-        xBtn.setPickOnBounds(true);
 
-        //portal: buttons that move you on the webpage to four functions 
-        Image image3 = new Image("file:res/magnGlass.png");
-        ImageView magniGlass = new ImageView(image3);
-        magniGlass.setFitWidth(30);
-        magniGlass.setFitHeight(37);
-        Button magnBtn = new Button();
-        magnBtn.setGraphic(magniGlass);
-        magnBtn.getStyleClass().addAll("portals", "sBtn");
-        //magnBtn.setMinSize(25,25);
-        Image image4 = new Image("file:res/recents.png");  
-        ImageView recents = new ImageView(image4);
-        recents.setFitWidth(30);
-        recents.setFitHeight(37);
-        Button recBtn = new Button();
-        recBtn.setGraphic(recents);
-        recBtn.getStyleClass().addAll("portals", "recBtn");
-        Image image5 = new Image("file:res/categories.png");  
-        ImageView categories = new ImageView(image5);
-        categories.setFitWidth(30);
-        categories.setFitHeight(37);
-        Button catBtn = new Button();
-        catBtn.setGraphic(categories);
-        catBtn.getStyleClass().addAll("portals", "browseBtn");
-        Image image6 = new Image("file:res/fire.png");  
-        ImageView fire = new ImageView(image6);
-        fire.setFitWidth(30);
-        fire.setFitHeight(37);
-        Button fireBtn = new Button();
-        fireBtn.setGraphic(fire);
-        fireBtn.getStyleClass().addAll("portals", "fireBtn");
+        //background image
+        Image image2 = new Image("file:res/pbay.png");
+        //Image image2 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\shipcool.png"));  
+        ImageView backImage = new ImageView(image2);
+        backImage.setFitWidth(1540);
+        backImage.setFitHeight(785); 
 
-        //4 vboxes to add labels under them
-        Label magnLabel = new Label(" Search \nTorrents"); magnLabel.getStyleClass().add("portals");
-        Label catLabel = new Label(" Browse \nTorrents"); catLabel.getStyleClass().add("portals");
-        Label recLabel= new Label(" Recent \nTorrents"); recLabel.getStyleClass().add("portals");
-        Label fireLabel = new Label("Top \n100"); fireLabel.getStyleClass().add("portals");
-        VBox magn = new VBox(magnBtn, magnLabel);
-        VBox cat = new VBox(catBtn, catLabel);
-        VBox rec = new VBox(recBtn, recLabel);
-        VBox fireV = new VBox(fireBtn, fireLabel);
-        magn.setSpacing(10); magn.setAlignment(Pos.CENTER);
-        cat.setSpacing(10); cat.setAlignment(Pos.CENTER);
-        rec.setSpacing(10); rec.setAlignment(Pos.CENTER);
-        fireV.setSpacing(10); fireV.setAlignment(Pos.CENTER);
-
-         //hbox for button portals
-        HBox portal = new HBox(magn, cat, rec, fireV);
-        portal.setSpacing(50);
-        portal.setAlignment(Pos.CENTER);
-        
-        // Top: Search Bar
-        TextField searchBar = new TextField();
-        Button searchButton = new Button(" Pirate Search ");
-        HBox h = new HBox(xBtn, searchButton); 
-        h.setSpacing(0);
-        h.setAlignment(Pos.CENTER);
-        h.setMaxWidth(400); // Set a maximum width
-        searchBar.setPromptText("Pirate Search");
-        searchBar.setPrefWidth(775);
-        searchBar.setPrefHeight(58);
-        searchBar.setMaxWidth(775);
-        searchBar.getStyleClass().add("search-bar");
-        searchButton.getStyleClass().add("search-btn");
-        searchButton.setPrefHeight(55);
-        searchButton.setPickOnBounds(true);
-
-        // StackPane to stack the searchButton on top of the searchBar
-        StackPane searchStack = new StackPane(searchBar, h);
-        StackPane.setAlignment(h, Pos.CENTER_RIGHT);
-        StackPane.setMargin(h, new Insets(5, 0, 0, 0)); // Add space below the search bar
-        searchStack.setMaxWidth(1275); // Set a maximum width
-        //searchStack.getStyleClass().add("anchor-pane");
-        StackPane.setMargin(h, new Insets(0,-(0.08 * bounds.getWidth()),0,0));
-
-        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.trim().isEmpty()) {
-                h.setVisible(true);
-            } else {
-                h.setVisible(true);
-            }
-        });
-
-        xBtn.setOnAction(event -> searchBar.setText(""));
-
-        searchButton.setOnAction(event -> {
-            if (!searchBar.getText().equals("")) {
-                try {
-                    SceneManager.showSearchScene("", "");
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        // Adjusted position for the search stack
-        AnchorPane.setTopAnchor(searchStack, 145.0);
-        AnchorPane.setLeftAnchor(searchStack, 25.0);
-
-        //event handler for "Search Torrents" buttons
-        magnBtn.setOnAction(event -> {
-            App app = new App();
-            try {
-                app.start(new Stage());
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            primaryStage.close();
-        }); 
-
-        //event handler for "recent torrents" button
-        recBtn.setOnAction(event -> {
-            try {
-                    SceneManager.showRecentsScene();
-                } catch (FileNotFoundException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-        });
-        //event handler for "top 100" button
-         fireBtn.setOnAction(event -> {
-            try {
-                    SceneManager.showTrendingScene();
-                } catch (FileNotFoundException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-        });
-
-        //make the buttons pop when hovering over them
-        ScaleTransitionHelper.createScaleTransition(magnBtn, magnLabel);
-        ScaleTransitionHelper.createScaleTransition(fireBtn, fireLabel);
-        ScaleTransitionHelper.createScaleTransition(recBtn, recLabel);
-        
-
-
-        
-    // Create table columns
-    TableColumn<CategoryRow, Hyperlink> col1 = new TableColumn<>("Browse Torrents");
-    col1.setCellValueFactory(cellData -> {
-        Hyperlink link = new Hyperlink(cellData.getValue().getCategory1());
-        link.setOnAction(event -> handleLinkClick(cellData.getValue().getCategory1()));
-        return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
-    });
-
-    TableColumn<CategoryRow, Hyperlink> col2 = new TableColumn<>("     ");
-    col2.setCellValueFactory(cellData -> {
-        Hyperlink link = new Hyperlink(cellData.getValue().getCategory2());
-        link.setOnAction(event -> handleLinkClick(cellData.getValue().getCategory2()));
-        return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
-    });
-
-    // Create data for the table
-    ObservableList<CategoryRow> data = FXCollections.observableArrayList(
-            new CategoryRow("Audio:", "Games:"),
-            new CategoryRow("Music, Audio books, Sound clips, FLAC, Other", "PC, Mac, PSx, PlayStation, XBOX, Wii, IOS, Android, Other"),
-            new CategoryRow("Video:", "Applications:"),
-            new CategoryRow("Movies, DVDR, Music videos, Movie clips, TV shows, HD, 3D, Other", "Windows, Mac, UNIX, IOS, Android, Other")            
-    );
-
-    // Create the table
-    TableView<CategoryRow> table = new TableView<>(data);
-    table.getColumns().addAll(col1, col2);
-    table.setPrefWidth(0.82 * bounds.getWidth()); // Set the preferred width
-    table.getStyleClass().add("table-view");
-    table.setPrefHeight(0.77 * bounds.getHeight());
-    // gets rid of the extra space in the table horizontally (extra column)
-    table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-    table.getStyleClass().add("no-header"); // Add a custom style to remove header borders
-
-    // Adjusted position for the table view
-    AnchorPane.setTopAnchor(table, 250.0);
-    AnchorPane.setLeftAnchor(table, 100.0);
-
-
-
-       // AnchorPane for the left-top corner
-       AnchorPane leftTop = new AnchorPane(portal);
-       leftTop.getStyleClass().add("left-top-corner");
-       AnchorPane.setTopAnchor(portal, 15.0);
-       AnchorPane.setLeftAnchor(portal, 65.0);
-
+        SearchBarAndButtonsHelper sb = new SearchBarAndButtonsHelper();
+        VBox searchAndBtns = sb.createBar("", "");
+        searchAndBtns.getStyleClass().add("search-page-contrast");
+        searchAndBtns.setPrefHeight(250);
+        // searchAndBtns.setSpacing(5.0);
+        searchAndBtns.setAlignment(Pos.CENTER);
+         
         // Create a horizontal line (Separator)
         Separator separator = new Separator();
         separator.setPrefWidth(2600); // Set the preferred width of the line
@@ -238,21 +68,105 @@ public class Categories extends Application{
         horizontalLane.getStyleClass().add("horizontal-lane");
         horizontalLane.setMinHeight(12); // Set your preferred height
         // Adjusted position for the table view
+        AnchorPane.setTopAnchor(horizontalLane, 245.0);
+       
+        Image image6 = new Image("file:res/fire.png");  
+        ImageView fire = new ImageView(image6);
+        fire.setFitWidth(30);
+        fire.setFitHeight(37);
+        Button fireBtn = new Button();
+        fireBtn.setGraphic(fire);
+        fireBtn.getStyleClass().addAll("portals", "fireBtn");
 
-        VBox centerContent = new VBox(horizontalLane, searchStack);
-        centerContent.setAlignment(Pos.CENTER);
-            
+        // Create VBoxes with icons, titles, and lists
+    VBox vbox1 = createCategoryBox("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\audioo.gif", "Audio", "Music", "Audio books", "Sound clips", "Podcast", "Other");
+    VBox vbox2 = createCategoryBox("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\games.png", "Games", "PC", "Mac", "PlayStation, Xbox, Nintendo", "IOS, Android", "Other");
+    VBox vbox3 = createCategoryBox("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\videos.gif", "Videos", "Movies", "Music Videos", "Movie Clips", "TV Shows", "Other");
+    VBox vbox4 = createCategoryBox("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\appbox.gif", "Applications", "Windows", "Mac", "UNIX", "IOS, Android", "Other");
+    VBox vbox5 = createCategoryBox("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\books.gif", "Books", "Comics", "Fiction", "Fantasy", "Biography", "Other");
+    VBox vbox6 = createCategoryBox("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\otherb.gif", "Other", "Radio", "SkillShare", "Udemy", "Pearson", "Other");
+
+   // Create HBoxes for the first three categories and the last three categories
+   HBox hboxTop = new HBox(vbox1, vbox2, vbox3);
+   HBox hboxBottom = new HBox(vbox4, vbox5, vbox6);
+   hboxTop.setAlignment(Pos.CENTER);
+   hboxBottom.setAlignment(Pos.CENTER);
+   hboxTop.setSpacing(20);
+   hboxBottom.setSpacing(20);
+
+   // Create a parent VBox and add HBoxes to it
+   VBox vBoxesContainer = new VBox(horizontalLane, hboxTop, hboxBottom);
+   vBoxesContainer.setAlignment(Pos.CENTER);
+   vBoxesContainer.setSpacing(20);
+
+   // VBox for center content
+   VBox centerContent = new VBox(vBoxesContainer);
+   centerContent.setAlignment(Pos.CENTER);
+      
+      
+   // Create a ScrollPane and add the content to it
+    ScrollPane scrollPane = new ScrollPane();
+    scrollPane.setContent(backImage); // Assuming backImage is the root content
+    scrollPane.setFitToWidth(true);
+    scrollPane.setFitToHeight(true);
+
        // AnchorPane for the entire content
-       AnchorPane root = new AnchorPane(leftTop, centerContent, searchStack, table);
+       AnchorPane root = new AnchorPane(scrollPane, centerContent, searchAndBtns, horizontalLane);
        root.getStyleClass().add("main-pane");
 
-       Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
+       // Set layout constraints for centerContent
+        AnchorPane.setTopAnchor(centerContent, 250.0); // Adjust the top anchor based on your needs
+        AnchorPane.setLeftAnchor(centerContent, 0.0);
+        AnchorPane.setRightAnchor(centerContent, 0.0);
+
+       AnchorPane.setTopAnchor(searchAndBtns, 0.0);
+       AnchorPane.setLeftAnchor(searchAndBtns, 0.0);
+       AnchorPane.setRightAnchor(searchAndBtns, 0.0);
+
+       Scene scene = new Scene(root, 1540, 785);
        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
        primaryStage.setScene(scene);
        primaryStage.setTitle("DIMEEEEELOOOOOOOOOOOOOO");
        primaryStage.show();
     }
 
+    private VBox createCategoryBox(String iconPath, String title, String... options) {
+        // Load the icon
+        File file = new File(iconPath);
+        try {
+            String imageUrl = file.toURI().toURL().toString();
+            Image image = new Image(imageUrl);
+            ImageView iconView = new ImageView(image);
+            iconView.setFitWidth(30);
+            iconView.setFitHeight(30);
+    
+            // Create title label
+            Label titleLabel = new Label(title);
+            titleLabel.setStyle("-fx-font-size: 24px; -fx-text-fill: #a4a4ff; -fx-font-weight: bold;");
+    
+            // Create VBox for options
+            VBox optionsVBox = new VBox();
+            Hyperlink[] optionLinks = new Hyperlink[options.length];
+            for (int i = 0; i < options.length; i++) {
+                optionLinks[i] = new Hyperlink(options[i]);
+                final int index = i; // Needed for lambda expression
+                optionLinks[i].setOnAction(event -> handleLinkClick(options[index]));
+                optionsVBox.getChildren().add(optionLinks[i]);
+            }
+    
+            // VBox for the entire category box
+            VBox categoryBox = new VBox(new HBox(iconView, titleLabel), optionsVBox);
+            categoryBox.setAlignment(Pos.CENTER);
+            categoryBox.setSpacing(5);
+            categoryBox.setPadding(new Insets(10));
+    
+            return categoryBox;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return new VBox(); // Return an empty VBox or handle appropriately
+        }
+    }
+    
     private void handleLinkClick(String category) {
         // Handle the link click event (e.g., open a new scene or perform some action)
         System.out.println("Link clicked: " + category);

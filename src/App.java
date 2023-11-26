@@ -245,4 +245,3 @@ public class App extends Application {
         launch(args);
     }
 }
-

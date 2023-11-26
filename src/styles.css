@@ -25,7 +25,7 @@
 .search-bar-minimized {
     -fx-background-color: #302c34;
     -fx-font-size: 12.75px;
-    -fx-prompt-text-ill: #a8a4a4;
+    -fx-prompt-text-fill: #a8a4a4;
     -fx-background-radius: 15; /* Set the radius for rounded corners */
     -fx-padding: 0 0 0 10; /* Add left padding to the prompt text */
     -fx-font-family: "Verdana";
@@ -180,10 +180,6 @@
     -fx-padding: 10px; /* Add padding for spacing */
 }
 
-.horizontal-lane {
-    -fx-background-color: #ffcc00; /* Choose your preferred color */
-}
-
 .data-table {
     -fx-background-color: #302c34;
     -fx-text-fill: #d6d4d4;
@@ -196,7 +192,9 @@
 }
 
 .separator {
-    -fx-background-color: rgb(255, 0, 0); /* Change the color as needed */
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-text-box-border, -10%), -fx-text-box-border);
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: orange, derive(orange, 20%);
 }
 
 .no-header .column-header-background {
@@ -217,7 +215,8 @@
 }
 
 .hyperlink {
-    -fx-text-fill: blue;
+    -fx-text-fill: #29b4a6(255, 255, 255);
+    -fx-font-size: 18px;
     -fx-underline: true;
 }
 

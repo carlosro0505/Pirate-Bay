@@ -38,7 +38,7 @@ public class SearchBarAndButtonsHelper {
         TextField searchBar = new TextField();
         searchBar.setText(searchString);
         Button searchButton = new Button(" Search ");
-        searchBar.setPromptText("Pirate Search");
+        searchBar.setPromptText("Pirate-Search");
         //searchBar.setPrefWidth(775);
                 searchBar.setPrefWidth(1530);
         searchBar.setPrefHeight(43.5);
@@ -49,7 +49,7 @@ public class SearchBarAndButtonsHelper {
         searchButton.setPickOnBounds(true);
         //x icon in searchBar
         Image image7 = new Image("file:res/xIcon.png");
-        //Image image7 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\xIcon.png"));  
+        //Image image7 = new Image(new FileInputStream("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\xIcon.png"));  
         ImageView x = new ImageView(image7);
         x.setFitWidth(40);
         x.setFitHeight(40);
@@ -73,7 +73,7 @@ public class SearchBarAndButtonsHelper {
         searchStack.setMaxWidth(1505.28); // Set a maximum width
 
         //portal: buttons that move you on the webpage to four functions 
-        Image image3 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\magnGlass.png"));  
+        Image image3 = new Image(new FileInputStream("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\magnGlass.png"));  
         ImageView magniGlass = new ImageView(image3);
         magniGlass.setFitWidth(22.5);
         magniGlass.setFitHeight(27.75);
@@ -81,21 +81,21 @@ public class SearchBarAndButtonsHelper {
         magnBtn.setGraphic(magniGlass);
         magnBtn.getStyleClass().addAll("portals-minimized", "sBtn");
         //magnBtn.setMinSize(25,25);
-        Image image4 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\recents.png"));  
+        Image image4 = new Image(new FileInputStream("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\recents.png"));  
         ImageView recents = new ImageView(image4);
         recents.setFitWidth(22.5);
         recents.setFitHeight(27.75);
         Button recBtn = new Button();
         recBtn.setGraphic(recents);
         recBtn.getStyleClass().addAll("portals-minimized", "recBtn");
-        Image image5 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\categories.png"));  
+        Image image5 = new Image(new FileInputStream("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\categories.png"));  
         ImageView categories = new ImageView(image5);
         categories.setFitWidth(22.5);
         categories.setFitHeight(27.75);
         Button catBtn = new Button();
         catBtn.setGraphic(categories);
         catBtn.getStyleClass().addAll("portals-minimized", "browseBtn");
-        Image image6 = new Image(new FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate Bay\\res\\fire.png"));  
+        Image image6 = new Image(new FileInputStream("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\fire.png"));  
         ImageView fire = new ImageView(image6);
         fire.setFitWidth(22.5);
         fire.setFitHeight(27.75);
