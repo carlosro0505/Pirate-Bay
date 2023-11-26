@@ -229,3 +229,14 @@
     -fx-text-fill: #29b4a6;
     -fx-underline: true;
 }
+
+.hbox{
+    -fx-font-family: "Verdana";
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1 1 1 1; /* Top border width is 1px */
+    -fx-border-radius: 5;
+    -fx-padding: 0 15px 0 15px; /* Add left padding to the prompt text */
+}

@@ -137,21 +137,29 @@ public class Search extends Application {
         tableView.getColumns().addAll(catColumn, nameColumn, dateColumn, sizeColumn, SEColumn, LEColumn, uplColumn);
         //if search is not empty
         if(!searchString.equals("")){
-            //if there are not filters
+            //if there are not filters; if there is a string and no filter
             if(filter.getText().equals("")){
                 ObservableList<Data> items = FXCollections.observableArrayList(SearchEngine.search(FileParser.parseData(), searchString));
                 tableView.setItems(items);
             }
-            //if there are filters
-            else{
-                ObservableList<Data> items = FXCollections.observableArrayList(SearchEngine.classFilter(FileParser.parseData(), searchString, filter.getText()));
+        }
+        //else: searchString is empty
+        else{
+            //no searchString but filter is *recent, e.g., user clicked recents
+            if(filterString.equals("*RECENT")){
+                ObservableList<Data> items = FXCollections.observableArrayList(SearchEngine.recent(FileParser.parseData()));
                 tableView.setItems(items);
             }
-        }
-        //if it's empty just display all files I guess
-        else{
-        ObservableList<Data> items = FXCollections.observableArrayList(FileParser.parseData());
-        tableView.setItems(items);
+            //no searchString but filter is *trending, e.g., user clicked Trending
+            else if(filterString.equals("*TRENDING")){
+                ObservableList<Data> items = FXCollections.observableArrayList(SearchEngine.trending(FileParser.parseData()));
+                tableView.setItems(items);
+            }
+            //if it has a filter and no searchString
+            else{
+                ObservableList<Data> items = FXCollections.observableArrayList(SearchEngine.browseCategoriesFilter(FileParser.parseData(), filter.getText()));
+                tableView.setItems(items);
+            }
         }
         tableView.setPadding(new Insets(10, 10, 0, 10)); // Set padding for the VBox
 
@@ -182,28 +190,28 @@ public class Search extends Application {
         filterAndTable.setSpacing(2);
         
         ComboBox<String> audioBox = new ComboBox<>();
-        audioBox.setItems(FXCollections.observableArrayList("All Audio", "Music", "Audio Books", "Sound Clips", "Flac", "Other"));
+        audioBox.setItems(FXCollections.observableArrayList("Music", "Audio Books", "Sound Clips", "Flac", "Other"));
         audioBox.setValue("Audio");  // Optional: Set a default value
         audioBox.setPrefWidth(250);
         audioBox.setPrefHeight(75);
         ComboBox<String> videoBox = new ComboBox<>();
-        videoBox.setItems(FXCollections.observableArrayList("All Video", "Movies", "Movies DVDR", "Music Videos", 
+        videoBox.setItems(FXCollections.observableArrayList("Movies", "Movies DVDR", "Music Videos", 
         "Movie Clips", "TV Shows", "Handheld", "HD - Movies", "HD - TV Shows", "3D", "CAM/TS", "UHD/4K - Movies", "UHD/4K - TV Shows"));
         videoBox.setValue("Video");  // Optional: Set a default value
         videoBox.setPrefWidth(250);
         videoBox.setPrefHeight(75);
         ComboBox<String> appsBox = new ComboBox<>();
-        appsBox.setItems(FXCollections.observableArrayList("All Apps", "Windows", "Mac", "UNIX", "Handheld", "IOS", "Android", "Other OS"));
+        appsBox.setItems(FXCollections.observableArrayList("Windows", "Mac", "UNIX", "Handheld", "IOS", "Android", "Other OS"));
         appsBox.setValue("Applications");  // Optional: Set a default value
         appsBox.setPrefWidth(250);
         appsBox.setPrefHeight(75);
         ComboBox<String> gamesBox = new ComboBox<>();
-        gamesBox.setItems(FXCollections.observableArrayList("All Games", "PC", "Mac", "PSx", "XBOX360", "Wii", "Handheld", "IOS (iPad/iPhone)", "Android", "Other"));
+        gamesBox.setItems(FXCollections.observableArrayList("PC", "Mac", "PSx", "XBOX360", "Wii", "Handheld", "IOS (iPad/iPhone)", "Android", "Other"));
         gamesBox.setValue("Games");  // Optional: Set a default value
         gamesBox.setPrefWidth(250);
         gamesBox.setPrefHeight(75);
         ComboBox<String> otherBox = new ComboBox<>();
-        otherBox.setItems(FXCollections.observableArrayList("All Other", "E-Books", "Comics", "Pictures", "Covers", "Physibles", "Other"));
+        otherBox.setItems(FXCollections.observableArrayList( "E-Books", "Comics", "Pictures", "Covers", "Physibles", "Other"));
         otherBox.setValue("Others");  // Optional: Set a default value
         otherBox.setPrefWidth(250);
         otherBox.setPrefHeight(75);

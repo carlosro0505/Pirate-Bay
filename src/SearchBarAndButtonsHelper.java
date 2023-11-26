@@ -106,7 +106,7 @@ public class SearchBarAndButtonsHelper {
         Label magnLabel = new Label(" Search \nTorrents"); magnLabel.getStyleClass().add("portals");
         Label catLabel = new Label(" Browse \nTorrents"); catLabel.getStyleClass().add("portals");
         Label recLabel= new Label(" Recent \nTorrents"); recLabel.getStyleClass().add("portals");
-        Label fireLabel = new Label("Top \n100"); fireLabel.getStyleClass().add("portals");
+        Label fireLabel = new Label("Trending"); fireLabel.getStyleClass().add("portals");
         VBox magn = new VBox(magnBtn, magnLabel);
         VBox cat = new VBox(catBtn, catLabel);
         VBox rec = new VBox(recBtn, recLabel);
@@ -140,9 +140,9 @@ public class SearchBarAndButtonsHelper {
             } 
         }); 
         //event handler for "recent torrents" button
-         recBtn.setOnAction(event -> {
+        recBtn.setOnAction(event -> {
             try {
-                    SceneManager.showRecentsScene();
+                    SceneManager.showSearchScene("", "*RECENT");
                 } catch (FileNotFoundException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -151,7 +151,7 @@ public class SearchBarAndButtonsHelper {
         //event handler for "top 100" button
          fireBtn.setOnAction(event -> {
             try {
-                    SceneManager.showTrendingScene();
+                    SceneManager.showSearchScene("", "*TRENDING");
                 } catch (FileNotFoundException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

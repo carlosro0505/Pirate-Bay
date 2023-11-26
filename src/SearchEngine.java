@@ -1,5 +1,15 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ArrayList;
 
 public class SearchEngine {
 
@@ -13,7 +23,6 @@ public class SearchEngine {
                 searchResults.add(data);
             }
         }
-
         return searchResults;
     }
 
@@ -28,23 +37,52 @@ public class SearchEngine {
                 searchResults.add(data);
             }
         }
+        return searchResults;
+    }
+
+    public static List<Data> browseCategoriesFilter(List<Data> dataList, String filterString) {
+        List<Data> searchResults = new ArrayList<>();
+
+        for (Data data : dataList) {
+            if (data.getCategory().equals(filterString )||
+                data.getCategory().equals(filterString)  ||
+                data.getCategory().equals(filterString) ) 
+                {
+                searchResults.add(data);
+            }
+        }
+        return searchResults;
+    }
+
+    public static List<Data> recent(List<Data> dataList) {
+        List<Data> searchResults = new ArrayList<>(dataList);
+
+        // Create a DateTimeFormatter for parsing the date strings
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
+        // Use Collections.sort with a custom comparator to sort by date
+        Collections.sort(searchResults, Comparator.comparing(data -> LocalDate.parse(data.getDate(), formatter), Comparator.reverseOrder()));
 
         return searchResults;
     }
 
+    public static List<Data> trending(List<Data> dataList) {
+        List<Data> sortedList = new ArrayList<>(dataList);
+        // Use Collections.sort with a custom comparator to sort by SE/LE ratio
+        Collections.sort(sortedList, Comparator.<Data, Double>comparing(
+    data -> {
+        int se = Integer.parseInt(data.getSE());
+        int le = Integer.parseInt(data.getLE());
+        return le != 0 ? (double) se / le : 0.0;
+    }, Comparator.reverseOrder()));
+
+
+        return sortedList;
+    }
+    
+
+
     private static boolean containsIgnoreCase(String str, String searchTerm) {
         return str.toLowerCase().contains(searchTerm.toLowerCase());
     }
-
-    /*// Example usage:
-    public static void main(String[] args) {
-        List<Data> dataList = FileParser.parseData();
-        List<Data> searchResults = search(dataList, "your_search_term");
-
-        // Process the search results as needed
-        for (Data result : searchResults) {
-            System.out.println(result.getName());
-            // Add more fields as needed
-        }
-    } */
 }
