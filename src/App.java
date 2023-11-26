@@ -231,8 +231,6 @@ public class App extends Application {
 
         root.getChildren().addAll(backImage, imageView, searchAndBtns);
         Scene scene = new Scene(root, 1540, 785);
-        System.out.println("H: " + bounds.getHeight());
-        System.out.println("W: " + bounds.getWidth());
         //Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
         SceneManager.setPrimaryStage(primaryStage);
         primaryStage.setOnShown(event -> searchBar.requestFocus());

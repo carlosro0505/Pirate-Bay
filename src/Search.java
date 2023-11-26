@@ -69,7 +69,7 @@ public class Search extends Application {
 
         // tableView.setStyle("-fx-background-color: #22bad9; -fx-text-fill: #d6d4d4;");
         // the second value here sets what time the column takes in as input
-        TableColumn<Data, Hyperlink> catColumn = new TableColumn<>("Categories");
+        TableColumn<Data, Hyperlink> catColumn = new TableColumn<>("Category");
         TableColumn<Data, Hyperlink> nameColumn = new TableColumn<>("Name");
         TableColumn<Data, String> dateColumn = new TableColumn<>("Uploaded On");
         TableColumn<Data, String> sizeColumn = new TableColumn<>("Size");
@@ -77,20 +77,7 @@ public class Search extends Application {
         TableColumn<Data, String> LEColumn = new TableColumn<>("LE");
         TableColumn<Data, Hyperlink> uplColumn = new TableColumn<>("Uploaded By");
 
-        catColumn.setCellValueFactory(cellData -> {
-        Data data = cellData.getValue();
-        Hyperlink link = new Hyperlink(data.getCategory());
-        link.getStyleClass().add("hyperlink-carlos");
-        link.setOnAction(event -> {
-            try {
-                handleLinkClick(data.getID());
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        });
-        return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
-    });
+
 
     nameColumn.setCellValueFactory(cellData -> {
         Data data = cellData.getValue();
@@ -98,7 +85,7 @@ public class Search extends Application {
         link.getStyleClass().add("hyperlink-carlos");
         link.setOnAction(event -> {
             try {
-                handleLinkClick(data.getID());
+                handleLinkItemClick(data.getID());
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -112,7 +99,7 @@ public class Search extends Application {
         link.getStyleClass().add("hyperlink-carlos");
         link.setOnAction(event -> {
             try {
-                handleLinkClick(data.getID());
+                handleLinkUplClick(data.getID());
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -120,7 +107,7 @@ public class Search extends Application {
         });
         return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
     });
-       
+        catColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
         SEColumn.setCellValueFactory(new PropertyValueFactory<>("SE"));
@@ -347,7 +334,19 @@ public class Search extends Application {
         primaryStage.close();
     }
 
-    private void handleLinkClick(int clickedID) throws FileNotFoundException {
+    private void handleLinkItemClick(int clickedID) throws FileNotFoundException {
+        List<Data> dataList = FileParser.parseData();
+    
+        for (Data data : dataList) {
+            if (data.getID() == clickedID) {
+                // Found the associated ID, do something with the data
+                SceneManager.showItemsScene(data);
+                break;  // Exit the loop since we found the data
+            }
+        }
+    }
+
+    private void handleLinkUplClick(int clickedID) throws FileNotFoundException {
         List<Data> dataList = FileParser.parseData();
     
         for (Data data : dataList) {
