@@ -60,25 +60,6 @@ public class Categories extends Application{
         // searchAndBtns.setSpacing(5.0);
         searchAndBtns.setAlignment(Pos.CENTER);
          
-        // Create a horizontal line (Separator)
-        Separator separator = new Separator();
-        separator.setPrefWidth(2600); // Set the preferred width of the line
-        separator.getStyleClass().add("separator");
-        // Horizontal lane
-        HBox horizontalLane = new HBox(separator);
-        horizontalLane.getStyleClass().add("horizontal-lane");
-        horizontalLane.setMinHeight(12); // Set your preferred height
-        // Adjusted position for the table view
-        AnchorPane.setTopAnchor(horizontalLane, 245.0);
-       
-        Image image6 = new Image("file:res/fire.png");  
-        ImageView fire = new ImageView(image6);
-        fire.setFitWidth(30);
-        fire.setFitHeight(37);
-        Button fireBtn = new Button();
-        fireBtn.setGraphic(fire);
-        fireBtn.getStyleClass().addAll("portals", "fireBtn");
-
         VBox vbox1 = createCategoryBox("res/musicNote.png", "Audio", "Music", "Audio books", "Sound clips", "Podcast", "Other");
         VBox vbox2 = createCategoryBox("res/games.png", "Games", "PC", "Mac", "PlayStation, Xbox, Nintendo", "IOS, Android", "Other");
         VBox vbox3 = createCategoryBox("res/movies.png", "Videos", "Movies", "Music Videos", "Movie Clips", "TV Shows", "Other");
@@ -95,7 +76,7 @@ public class Categories extends Application{
    hboxBottom.setSpacing(20);
 
    // Create a parent VBox and add HBoxes to it
-   VBox vBoxesContainer = new VBox(horizontalLane, hboxTop, hboxBottom);
+   VBox vBoxesContainer = new VBox(hboxTop, hboxBottom);
    vBoxesContainer.setAlignment(Pos.CENTER);
    vBoxesContainer.setSpacing(20);
 
@@ -111,7 +92,7 @@ public class Categories extends Application{
     scrollPane.setFitToHeight(true);
 
        // AnchorPane for the entire content
-       AnchorPane root = new AnchorPane(scrollPane, centerContent, searchAndBtns, horizontalLane);
+       AnchorPane root = new AnchorPane(scrollPane, centerContent, searchAndBtns);
        root.getStyleClass().add("main-pane");
 
        // Set layout constraints for centerContent
@@ -126,7 +107,7 @@ public class Categories extends Application{
        Scene scene = new Scene(root, 1540, 785);
        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
        primaryStage.setScene(scene);
-       primaryStage.setTitle("DIMEEEEELOOOOOOOOOOOOOO");
+       primaryStage.setTitle("Browse Torrents");
        primaryStage.show();
     }
 
