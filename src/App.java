@@ -166,7 +166,7 @@ public class App extends Application {
         // event handler for "recent torrents" button
         recBtn.setOnAction(event -> {
             try {
-                SceneManager.showSearchScene("", "Recents");
+                SceneManager.showSearchScene("", "    Recents");
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -175,7 +175,7 @@ public class App extends Application {
         // event handler for "top 100" button
         fireBtn.setOnAction(event -> {
             try {
-                SceneManager.showSearchScene("", "Trending");
+                SceneManager.showSearchScene("", "    Trending");
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

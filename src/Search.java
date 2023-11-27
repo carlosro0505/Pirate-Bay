@@ -145,13 +145,13 @@ public class Search extends Application {
         // else: searchString is empty
         else {
             // no searchString but filter is *recent, e.g., user clicked recents
-            if (filterString.equals("Recents")) {
+            if (filterString.equals("    Recents")) {
                 ObservableList<Data> items = FXCollections
                         .observableArrayList(SearchEngine.recent(FileParser.parseData()));
                 tableView.setItems(items);
             }
             // no searchString but filter is *trending, e.g., user clicked Trending
-            else if (filterString.equals("Trending")) {
+            else if (filterString.equals("    Trending")) {
                 ObservableList<Data> items = FXCollections
                         .observableArrayList(SearchEngine.trending(FileParser.parseData()));
                 tableView.setItems(items);
