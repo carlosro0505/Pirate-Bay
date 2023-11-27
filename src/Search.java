@@ -23,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 
 public class Search extends Application {
@@ -155,7 +156,27 @@ public class Search extends Application {
                 tableView.setItems(items);
             }
         }
-        tableView.setPadding(new Insets(10, 10, 0, 10)); // Set padding for the VBox
+        tableView.setPadding(new Insets(10, 10, 0, 20)); // Set padding for the tableview
+        
+        // Set row factory to handle mouse events
+        tableView.setRowFactory(tv -> {
+            TableRow<Data> row = new TableRow<>();
+
+            row.setOnMouseEntered(event -> {
+                if (!row.isEmpty()) {
+                    //row.setStyle("-fx-background-color: yellow;");
+
+                }
+            });
+
+            row.setOnMouseExited(event -> {
+                if (!row.isEmpty()) {
+                    row.setStyle("");
+                }
+            });
+
+            return row;
+        });
 
 
         //x icon in filter tags
@@ -181,6 +202,7 @@ public class Search extends Application {
         //filterStack.setPadding(new Insets(2, 0, 0, 0)); // Set padding for the VBox
 
         VBox filterAndTable = new VBox(filterStack, tableView);
+        filterAndTable.getStyleClass().addAll("vbox-table");
         filterAndTable.setSpacing(2);
         
         ComboBox<String> audioBox = new ComboBox<>();

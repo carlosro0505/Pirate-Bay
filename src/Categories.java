@@ -78,7 +78,11 @@ public class Categories extends Application{
         fireBtn.setGraphic(fire);
         fireBtn.getStyleClass().addAll("portals", "fireBtn");
 
+<<<<<<< HEAD
         // Create VBoxes with icons, titles, and lists
+=======
+        // Create VBoxes with icons, titles, and lists 
+>>>>>>> 3836cf8c3dde31271c8bc2bcdab5054d63b160d0
     VBox vbox1 = createCategoryBox("res/audioo.gif", "Audio", "Music", "Audio books", "Sound clips", "Podcast", "Other");
     VBox vbox2 = createCategoryBox("res/games.png", "Games", "PC", "Mac", "PlayStation, Xbox, Nintendo", "IOS, Android", "Other");
     VBox vbox3 = createCategoryBox("res/videos.gif", "Videos", "Movies", "Music Videos", "Movie Clips", "TV Shows", "Other");
