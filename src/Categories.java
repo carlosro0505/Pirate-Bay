@@ -139,6 +139,7 @@ public class Categories extends Application{
                         e.printStackTrace();
                     }
                 });
+                optionLinks[i].setFocusTraversable(false); // Set focusTraversable to false
                 optionsVBox.getChildren().add(optionLinks[i]);
             }
     
