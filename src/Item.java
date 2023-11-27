@@ -40,7 +40,7 @@ public class Item extends Application {
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
 
-        VBox searchAndBtns = new SearchBarAndButtonsHelper().createBar("");
+        VBox searchAndBtns = new SearchBarAndButtonsHelper().createBar("", "");
         // searchAndBtns.setSpacing(5.0);
         searchAndBtns.setAlignment(Pos.CENTER);
         //putting each field of data object into a ready to display string

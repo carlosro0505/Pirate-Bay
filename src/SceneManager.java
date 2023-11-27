@@ -29,11 +29,6 @@ public class SceneManager {
         trending.start(primaryStage);
     }
 
-    public static void showRecentsScene() throws FileNotFoundException {
-        Recents recents = new Recents(primaryStage);
-        recents.start(primaryStage);
-    }
-
     public static void showMainScene() throws FileNotFoundException {
         App app = new App();
         try {
