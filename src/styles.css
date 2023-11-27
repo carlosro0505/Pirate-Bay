@@ -78,12 +78,19 @@
 
 /* changes the background*/
 .table-view {
+    -fx-padding: 0 0 0 0;
+
     -fx-table-cell-border-color: transparent;
     -fx-text-fill: #d6d4d4;
     -fx-font-family: "Verdana";
     -fx-control-inner-background: #181c24;
-    /*-fx-font-size: 10.5px; */
-   /* -fx-padding: 0 0 0 0; */
+    /*-fx-font-size: 10.5px; 
+    -fx-padding: 0 0 0 25;
+            -fx-table-header-border-color: #181c24; 
+    -fx-selection-bar-non-focused: #181c24; 
+    -fx-column-resize-handle: #181c24;
+*/
+
   }
 
   .table-view .table-row-cell:hover {
@@ -92,28 +99,31 @@
 
   /*this affects the column header text padding at least*/
   .table-view .column-header-background{
-    -fx-background-color: transparent;
+    -fx-background-color: #181c24;
     /*-fx-background-color: linear-gradient(to bottom, #181c24, #181c24); */
-    /*-fx-background-radius: 5.0 5.0 0.0 0.0;*/
-    -fx-background-insets: 0 11px 0 0;
-    -fx-padding: 7px 0 15px 0;
+    /*-fx-background-radius: 5.0 5.0 0.0 0.0;
+        -fx-background-insets: 0 11px 0 0;
+*/
+    -fx-padding: 15px 0 15px 0;
     -fx-text-fill: #d6d4d4;
     -fx-font-family: "Verdana";
-    -fx-font-size: 10px;
-    -fx-font-weight: bold;   
+    -fx-font-size: 15px;
 }
 
 /* controls column header text*/
 .table-view .column-header .label {
     -fx-background-color: #181c24;
     -fx-text-fill: #a4a4ff;
-    -fx-alignment: CENTER-LEFT; /* Set text alignment to the left */
+    -fx-alignment: CENTER; 
+    /* -fx-alignment: CENTER-LEFT;  Set text alignment to the left */
 }
 
 /* controls sutff in the cells*/
 .table-view .table-cell{
     -fx-padding: 20px 0 20px 0;
     -fx-font-size: 15px;
+    -fx-alignment: CENTER; 
+
 }
 
 .table-row-cell {

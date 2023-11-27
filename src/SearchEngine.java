@@ -18,9 +18,9 @@ public class SearchEngine {
 
         for (Data data : dataList) {
             if (containsIgnoreCase(data.getName(), searchTerm) ||
-                containsIgnoreCase(data.getDate(), searchTerm) ||
-                containsIgnoreCase(data.getUploadBy(), searchTerm)||
-                containsIgnoreCase(data.getCategory(), searchTerm)) {
+                    containsIgnoreCase(data.getDate(), searchTerm) ||
+                    containsIgnoreCase(data.getUploadBy(), searchTerm) ||
+                    containsIgnoreCase(data.getCategory(), searchTerm)) {
                 searchResults.add(data);
             }
         }
@@ -31,10 +31,9 @@ public class SearchEngine {
         List<Data> searchResults = new ArrayList<>();
 
         for (Data data : dataList) {
-            if ((containsIgnoreCase(data.getName(), searchTerm) && data.getCategory().equals(filterString) )||
-                (containsIgnoreCase(data.getDate(), searchTerm) && data.getCategory().equals(filterString) ) ||
-                (containsIgnoreCase(data.getUploadBy(), searchTerm) && data.getCategory().equals(filterString) )) 
-                {
+            if ((containsIgnoreCase(data.getName(), searchTerm) && data.getCategory().equals(filterString)) ||
+                    (containsIgnoreCase(data.getDate(), searchTerm) && data.getCategory().equals(filterString)) ||
+                    (containsIgnoreCase(data.getUploadBy(), searchTerm) && data.getCategory().equals(filterString))) {
                 searchResults.add(data);
             }
         }
@@ -45,10 +44,9 @@ public class SearchEngine {
         List<Data> searchResults = new ArrayList<>();
 
         for (Data data : dataList) {
-            if (data.getCategory().equals(filterString )||
-                data.getCategory().equals(filterString)  ||
-                data.getCategory().equals(filterString) ) 
-                {
+            if (data.getCategory().equals(filterString) ||
+                    data.getCategory().equals(filterString) ||
+                    data.getCategory().equals(filterString)) {
                 searchResults.add(data);
             }
         }
@@ -59,7 +57,7 @@ public class SearchEngine {
         List<Data> searchResults = new ArrayList<>();
 
         for (Data data : dataList) {
-            if (data.getUploadBy().contains(userName)) 
+            if (data.getUploadBy().contains(userName))
                 searchResults.add(data);
         }
         return searchResults;
@@ -72,7 +70,8 @@ public class SearchEngine {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
         // Use Collections.sort with a custom comparator to sort by date
-        Collections.sort(searchResults, Comparator.comparing(data -> LocalDate.parse(data.getDate(), formatter), Comparator.reverseOrder()));
+        Collections.sort(searchResults,
+                Comparator.comparing(data -> LocalDate.parse(data.getDate(), formatter), Comparator.reverseOrder()));
 
         return searchResults;
     }
@@ -81,17 +80,14 @@ public class SearchEngine {
         List<Data> sortedList = new ArrayList<>(dataList);
         // Use Collections.sort with a custom comparator to sort by SE/LE ratio
         Collections.sort(sortedList, Comparator.<Data, Double>comparing(
-    data -> {
-        int se = Integer.parseInt(data.getSE());
-        int le = Integer.parseInt(data.getLE());
-        return le != 0 ? (double) se / le : 0.0;
-    }, Comparator.reverseOrder()));
-
+                data -> {
+                    int se = Integer.parseInt(data.getSE());
+                    int le = Integer.parseInt(data.getLE());
+                    return le != 0 ? (double) se / le : 0.0;
+                }, Comparator.reverseOrder()));
 
         return sortedList;
     }
-    
-
 
     private static boolean containsIgnoreCase(String str, String searchTerm) {
         return str.toLowerCase().contains(searchTerm.toLowerCase());

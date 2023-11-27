@@ -6,10 +6,8 @@ import java.util.Scanner;
 
 public class FileParser {
 
-  
-
     public static List<Data> parseData() throws FileNotFoundException {
-                StringBuilder content = new StringBuilder();
+        StringBuilder content = new StringBuilder();
         File file = new File("res/data.txt");
         Scanner scanner = new Scanner(file);
 
@@ -35,9 +33,9 @@ public class FileParser {
                     components[3], // size
                     components[4], // SE
                     components[5], // LE
-                    components[6],  // uploadBy
+                    components[6], // uploadBy
                     components[7], // description
-                    Integer.parseInt(components[8])  // ID
+                    Integer.parseInt(components[8]) // ID
             );
 
             // Add the Data object to the list

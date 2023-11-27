@@ -23,7 +23,7 @@ public class SceneManager {
         Search search = new Search(primaryStage, searchString, classString);
         search.start(primaryStage);
     }
-    
+
     public static void showTrendingScene() throws FileNotFoundException {
         Trending trending = new Trending(primaryStage);
         trending.start(primaryStage);
