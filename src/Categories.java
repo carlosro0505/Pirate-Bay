@@ -78,21 +78,12 @@ public class Categories extends Application{
         fireBtn.setGraphic(fire);
         fireBtn.getStyleClass().addAll("portals", "fireBtn");
 
-        // Create VBoxes with icons, titles, and lists 
         VBox vbox1 = createCategoryBox("res/audioo.gif", "Audio", "Music", "Audio books", "Sound clips", "Podcast", "Other");
         VBox vbox2 = createCategoryBox("res/games.png", "Games", "PC", "Mac", "PlayStation, Xbox, Nintendo", "IOS, Android", "Other");
         VBox vbox3 = createCategoryBox("res/videos.gif", "Videos", "Movies", "Music Videos", "Movie Clips", "TV Shows", "Other");
         VBox vbox4 = createCategoryBox("res/appbox.gif", "Applications", "Windows", "Mac", "UNIX", "IOS, Android", "Other");
         VBox vbox5 = createCategoryBox("res/books.gif", "Books", "Comics", "Fiction", "Fantasy", "Biography", "Other");
         VBox vbox6 = createCategoryBox("res/otherb.gif", "Other", "Radio", "SkillShare", "Udemy", "Pearson", "Other");
-    /*        // Create VBoxes with icons, titles, and lists 
-    VBox vbox1 = createCategoryBox("res/musicNote.png", "Audio", "Music", "Audio books", "Sound clips", "Podcast", "Other");
-    VBox vbox2 = createCategoryBox("res/games.png", "Games", "PC", "Mac", "PlayStation, Xbox, Nintendo", "IOS, Android", "Other");
-    VBox vbox3 = createCategoryBox("res/movies.png", "Videos", "Movies", "Music Videos", "Movie Clips", "TV Shows", "Other");
-    VBox vbox4 = createCategoryBox("res/apps.png", "Applications", "Windows", "Mac", "UNIX", "IOS, Android", "Other");
-    VBox vbox5 = createCategoryBox("res/books.png", "Books", "Comics", "Fiction", "Fantasy", "Biography", "Other");
-    VBox vbox6 = createCategoryBox("res/puzzle.png", "Other", "Radio", "SkillShare", "Udemy", "Pearson", "Other");
-     */
 
    // Create HBoxes for the first three categories and the last three categories
    HBox hboxTop = new HBox(vbox1, vbox2, vbox3);
