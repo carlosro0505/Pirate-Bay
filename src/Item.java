@@ -54,7 +54,7 @@ public class Item extends Application {
         String description = data.getDescription();
 
         //Labels serving as headers
-        Label title = new Label("     About "+data.getName()+":");
+        Label title = new Label("     About "+data.getName());
         title.setStyle("-fx-font: 10 verdana; -fx-text-fill: #a4a4ff; -fx-font-weight: bold");
         Label fileDesc = new Label("   File Description:");
         fileDesc.setStyle("-fx-font: 10 verdana; -fx-text-fill: #a4a4ff; -fx-font-weight: bold");
@@ -69,7 +69,7 @@ public class Item extends Application {
         //stackpane putting header text on rectangle;
         StackPane titleFrame = new StackPane();
         titleFrame.getChildren().addAll(titleRect,title);
-        StackPane.setAlignment(title,Pos.CENTER_LEFT);
+        StackPane.setAlignment(title,Pos.CENTER);
 
         //rectangle containing the header for file details
         Rectangle infoRect = new Rectangle(0.3*bounds.getWidth(), 0.05*bounds.getHeight());
