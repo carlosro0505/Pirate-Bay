@@ -227,7 +227,7 @@ public class App extends Application {
             double leftAnchor =( (newVal.doubleValue() - imageView.getBoundsInParent().getWidth()) / 2);
             AnchorPane.setLeftAnchor(imageView, leftAnchor);
             AnchorPane.setRightAnchor(imageView, leftAnchor);
-        }); 
+        });
 
         root.getChildren().addAll(backImage, imageView, searchAndBtns);
         Scene scene = new Scene(root, 1540, 785);
