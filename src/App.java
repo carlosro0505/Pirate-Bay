@@ -1,12 +1,7 @@
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
-import javafx.animation.ScaleTransition;
-import javafx.animation.SequentialTransition;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,27 +9,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.event.EventHandler;
 
 public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
-        // gets your screen's dimensions
-        Screen screen = Screen.getPrimary();
-        Rectangle2D bounds = screen.getVisualBounds();
-
-        // image logo pirate
-        // Image image = new Image(new
-        // FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate
-        // Bay\\res\\pirateLogo3.png"));
         Image image = new Image("file:res/pirateLogo3.png");
         ImageView imageView = new ImageView(image);
         imageView.setPreserveRatio(true);
@@ -42,18 +26,12 @@ public class App extends Application {
 
         // background image
         Image image2 = new Image("file:res/shipcool.png");
-        // Image image2 = new Image(new
-        // FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate
-        // Bay\\res\\shipcool.png"));
         ImageView backImage = new ImageView(image2);
         backImage.setFitWidth(1540);
         backImage.setFitHeight(785);
 
         // x icon in searchBar
         Image image7 = new Image("file:res/xIcon.png");
-        // Image image7 = new Image(new
-        // FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate
-        // Bay\\res\\xIcon.png"));
         ImageView x = new ImageView(image7);
         x.setFitWidth(40);
         x.setFitHeight(40);
@@ -64,9 +42,6 @@ public class App extends Application {
 
         // portal: buttons that move you on the webpage to four functions
         Image image3 = new Image("file:res/magnGlass.png");
-        // Image image3 = new Image(new
-        // FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate
-        // Bay\\res\\magnGlass.png"));
         ImageView magniGlass = new ImageView(image3);
         magniGlass.setFitWidth(30);
         magniGlass.setFitHeight(37);
@@ -172,7 +147,7 @@ public class App extends Application {
                 e.printStackTrace();
             }
         });
-        // event handler for "top 100" button
+        // event handler for "trending" button
         fireBtn.setOnAction(event -> {
             try {
                 SceneManager.showSearchScene("", "    Trending");
@@ -200,10 +175,10 @@ public class App extends Application {
                 e.printStackTrace();
             }
         });
-        // Event handler for Enter key press in the text field
+        // event handler for Enter key press in the text field
         searchBar.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                // Simulate a button click when Enter key is pressed
+                // simulate a button click when Enter key is pressed
                 searchButton.fire();
             }
         });
@@ -214,7 +189,7 @@ public class App extends Application {
         ScaleTransitionHelper.createScaleTransition(fireBtn, fireLabel);
         ScaleTransitionHelper.createScaleTransition(recBtn, recLabel);
 
-        // Initial state: hide the search button
+        // initial state: hide the search button
         h.setVisible(false);
 
         // StackPane to stack the searchButton on top of the searchBar
@@ -227,13 +202,12 @@ public class App extends Application {
         searchAndBtns.setSpacing(40.0);
         searchAndBtns.setAlignment(Pos.CENTER);
 
+        // to center the image no matter what screen
         AnchorPane root = new AnchorPane();
-
         AnchorPane.setTopAnchor(searchAndBtns, 360.0);
         AnchorPane.setLeftAnchor(searchAndBtns, 0.0);
         AnchorPane.setRightAnchor(searchAndBtns, 0.0);
 
-        // to center the image no matter what screen
 
         // Set constraints for the ImageView to be horizontally centered
         root.widthProperty().addListener((obs, oldVal, newVal) -> {
@@ -246,7 +220,6 @@ public class App extends Application {
 
         root.getChildren().addAll(backImage, imageView, searchAndBtns);
         Scene scene = new Scene(root, 1540, 785);
-        // Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
         SceneManager.setPrimaryStage(primaryStage);
         primaryStage.setOnShown(event -> searchBar.requestFocus());
 

@@ -1,5 +1,4 @@
 import java.io.FileNotFoundException;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SceneManager {

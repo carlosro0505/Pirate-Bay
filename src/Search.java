@@ -1,4 +1,3 @@
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.List;
 
@@ -7,19 +6,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.skin.TableHeaderRow;
-import javafx.scene.control.skin.TableViewSkin;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -41,14 +35,8 @@ public class Search extends Application {
 
     @Override
     public void start(Stage stage) throws FileNotFoundException {
-        Screen screen = Screen.getPrimary();
-        Rectangle2D bounds = screen.getVisualBounds();
-
         // background image
         Image image2 = new Image("file:res/shipcool.png");
-        // Image image2 = new Image(new
-        // FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate
-        // Bay\\res\\shipcool.png"));
         ImageView backImage = new ImageView(image2);
         backImage.setFitWidth(1540);
         backImage.setFitHeight(785);
@@ -57,7 +45,6 @@ public class Search extends Application {
         VBox searchAndBtns = sb.createBar(searchString, filterString);
         searchAndBtns.getStyleClass().add("search-page-contrast");
         searchAndBtns.setPrefHeight(250);
-        // searchAndBtns.setSpacing(5.0);
         searchAndBtns.setAlignment(Pos.CENTER);
 
         TableView<Data> tableView = new TableView<>();
@@ -187,9 +174,6 @@ public class Search extends Application {
 
         // x icon in filter tags
         Image image7 = new Image("file:res/xIcon.png");
-        // Image image7 = new Image(new
-        // FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate
-        // Bay\\res\\xIcon.png"));
         ImageView x = new ImageView(image7);
         x.setFitWidth(20);
         x.setFitHeight(20);
@@ -207,7 +191,6 @@ public class Search extends Application {
         filterStack.setMaxWidth(filter.getWidth()); // Set a maximum width
         if (filterString.equals(""))
             filterStack.setVisible(false);
-        // filterStack.setPadding(new Insets(2, 0, 0, 0)); // Set padding for the VBox
 
         VBox filterAndTable = new VBox(filterStack, tableView);
         filterAndTable.getStyleClass().addAll("vbox-table");
@@ -222,32 +205,32 @@ public class Search extends Application {
         videoBox.setItems(FXCollections.observableArrayList("Movies", "Movies DVDR", "Music Videos",
                 "Movie Clips", "TV Shows", "Handheld", "HD - Movies", "HD - TV Shows", "3D", "CAM/TS",
                 "UHD/4K - Movies", "UHD/4K - TV Shows"));
-        videoBox.setValue("Video"); // Optional: Set a default value
+        videoBox.setValue("Video"); // sets a default value
         videoBox.setPrefWidth(250);
         videoBox.setPrefHeight(75);
         ComboBox<String> appsBox = new ComboBox<>();
         appsBox.setItems(
                 FXCollections.observableArrayList("Windows", "Mac", "UNIX", "Handheld", "IOS", "Android", "Other OS"));
-        appsBox.setValue("Applications"); // Optional: Set a default value
+        appsBox.setValue("Applications"); // sets a default value
         appsBox.setPrefWidth(250);
         appsBox.setPrefHeight(75);
         ComboBox<String> gamesBox = new ComboBox<>();
         gamesBox.setItems(FXCollections.observableArrayList("PC", "Mac", "PSx", "XBOX360", "Wii", "Handheld",
                 "IOS (iPad/iPhone)", "Android", "Other"));
-        gamesBox.setValue("Games"); // Optional: Set a default value
+        gamesBox.setValue("Games"); // sets a default value
         gamesBox.setPrefWidth(250);
         gamesBox.setPrefHeight(75);
         ComboBox<String> otherBox = new ComboBox<>();
         otherBox.setItems(
                 FXCollections.observableArrayList("E-Books", "Comics", "Pictures", "Covers", "Physibles", "Other"));
-        otherBox.setValue("Others"); // Optional: Set a default value
+        otherBox.setValue("Others"); // sets a default value
         otherBox.setPrefWidth(250);
         otherBox.setPrefHeight(75);
         VBox filterBox = new VBox(audioBox, videoBox, appsBox, gamesBox, otherBox);
         filterBox.setSpacing(0);
         filterBox.setPrefWidth(270);
         filterBox.setPrefHeight(1000);
-        filterBox.setPadding(new Insets(0, 10, 0, 10)); // Set padding for the VBox
+        filterBox.setPadding(new Insets(0, 10, 0, 10)); // sets a default value
         filterBox.getStyleClass().add("search-page-contrast");
 
         // listener for combo boxes
@@ -354,18 +337,14 @@ public class Search extends Application {
         root.getStyleClass().add("search-background");
         AnchorPane.setTopAnchor(filterAndTable, 225.0);
         AnchorPane.setLeftAnchor(filterAndTable, 270.0);
-        // AnchorPane.setTopAnchor(searchAndBtns, 0.025 * bounds.getHeight());
         AnchorPane.setTopAnchor(searchAndBtns, 0.0);
         AnchorPane.setLeftAnchor(searchAndBtns, 0.0);
         AnchorPane.setRightAnchor(searchAndBtns, 0.0);
         AnchorPane.setTopAnchor(filterBox, 250.0);
-        // System.out.println(bounds.getHeight());
-        // System.out.println(bounds.getWidth());
 
         // add tableView after
         root.getChildren().addAll(searchAndBtns, filterAndTable, filterBox);
         Scene scene = new Scene(root, 1540, 785);
-        // Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
         System.out.println(getClass().getResource("styles.css").toExternalForm());
 
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());

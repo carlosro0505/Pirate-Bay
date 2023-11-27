@@ -27,7 +27,7 @@ public class ScaleTransitionHelper {
         });
 
         button.setOnMouseExited(event -> {
-            // Manually reverse the animation on mouse exit
+            // reverse the animation on mouse exit
             label.getStyleClass().setAll("portals");
             reverseTransition.playFromStart();
         });

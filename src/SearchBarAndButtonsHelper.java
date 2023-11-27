@@ -1,9 +1,6 @@
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -12,7 +9,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 import javafx.scene.control.TextField;
 
 //this class should be called whenever the search bar and buttons needs to be used 
@@ -24,8 +20,6 @@ public class SearchBarAndButtonsHelper {
 
     public VBox createBar(String searchString, String filterString) throws FileNotFoundException {
         this.filterString = filterString;
-        Screen screen = Screen.getPrimary();
-        Rectangle2D bounds = screen.getVisualBounds();
 
         // logo image
         Image image = new Image("file:res/pirateLogo3.png");
@@ -49,8 +43,6 @@ public class SearchBarAndButtonsHelper {
         searchButton.setPickOnBounds(true);
         // x icon in searchBar
         Image image7 = new Image("file:res/xIcon.png");
-        // Image image7 = new Image(new
-        // FileInputStream("C:\\Users\\Owner\\Desktop\\Pirate-Bay\\res\\xIcon.png"));
         ImageView x = new ImageView(image7);
         x.setFitWidth(40);
         x.setFitHeight(40);
@@ -64,8 +56,6 @@ public class SearchBarAndButtonsHelper {
         // h.setAlignment(Pos.BASELINE_RIGHT);
         h.setMaxWidth(400);
         h.setAlignment(Pos.CENTER);
-        // searchBar.setAlignment(Pos.CENTER_LEFT);
-        // StackPane to stack the searchButton on top of the searchBar
         StackPane searchStack = new StackPane(searchBar, h);
         StackPane.setAlignment(h, Pos.CENTER_RIGHT);
 
@@ -74,16 +64,12 @@ public class SearchBarAndButtonsHelper {
         searchStack.setMaxWidth(1505.28); // Set a maximum width
         // portal: buttons that move you on the webpage to four functions
         Image image3 = new Image("file:res/magnGlass.png");
-        // Image image3 = new Image(new
-        // FileInputStream("C:\\Users\\carlo\\OneDrive\\Desktop\\Pirate
-        // Bay\\res\\magnGlass.png"));
         ImageView magniGlass = new ImageView(image3);
         magniGlass.setFitWidth(30);
         magniGlass.setFitHeight(37);
         Button magnBtn = new Button();
         magnBtn.setGraphic(magniGlass);
         magnBtn.getStyleClass().addAll("portals", "sBtn");
-        // magnBtn.setMinSize(25,25);
         Image image4 = new Image("file:res/recents.png");
         ImageView recents = new ImageView(image4);
         recents.setFitWidth(30);
@@ -187,10 +173,10 @@ public class SearchBarAndButtonsHelper {
                 e.printStackTrace();
             }
         });
-        // Event handler for Enter key press in the text field
+        // event handler for Enter key press in the text field
         searchBar.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                // Simulate a button click when Enter key is pressed
+                // simulate a button click when Enter key is pressed
                 searchButton.fire();
             }
         });
@@ -201,7 +187,7 @@ public class SearchBarAndButtonsHelper {
         ScaleTransitionHelper.createScaleTransition(fireBtn, fireLabel);
         ScaleTransitionHelper.createScaleTransition(recBtn, recLabel);
 
-        // Initial state: hide the search button
+        // initial state: hide the search button
         if (searchBar.getText().equals("")) {
             h.setVisible(false);
         }

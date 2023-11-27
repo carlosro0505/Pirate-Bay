@@ -3,22 +3,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
-import javafx.scene.control.ListView;
-import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.TextArea;
@@ -27,7 +20,6 @@ import javafx.scene.image.ImageView;
 
 public class Item extends Application {
     private Stage primaryStage;
-    private Scene itemScene;
     private Data data;
 
     public Item(Stage primaryStage, Data data) {
@@ -37,9 +29,6 @@ public class Item extends Application {
 
     @Override
     public void start(Stage stage) throws FileNotFoundException {
-        Screen screen = Screen.getPrimary();
-        Rectangle2D bounds = screen.getVisualBounds();
-
         VBox searchAndBtns = new SearchBarAndButtonsHelper().createBar("", "");
         // searchAndBtns.setSpacing(5.0);
         searchAndBtns.setAlignment(Pos.CENTER);

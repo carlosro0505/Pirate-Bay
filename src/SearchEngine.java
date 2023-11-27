@@ -4,15 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.ArrayList;
 
 public class SearchEngine {
 
+    //regular search done from the home page
     public static List<Data> search(List<Data> dataList, String searchTerm) {
         List<Data> searchResults = new ArrayList<>();
 
@@ -27,6 +22,7 @@ public class SearchEngine {
         return searchResults;
     }
 
+    //when a filter "category" is added
     public static List<Data> classFilter(List<Data> dataList, String searchTerm, String filterString) {
         List<Data> searchResults = new ArrayList<>();
 
@@ -40,6 +36,7 @@ public class SearchEngine {
         return searchResults;
     }
 
+    //when a user selects from the Categories page
     public static List<Data> browseCategoriesFilter(List<Data> dataList, String filterString) {
         List<Data> searchResults = new ArrayList<>();
 
@@ -53,6 +50,7 @@ public class SearchEngine {
         return searchResults;
     }
 
+    //when a user clicks a file's username
     public static List<Data> browseByUser(List<Data> dataList, String userName) {
         List<Data> searchResults = new ArrayList<>();
 
@@ -63,6 +61,7 @@ public class SearchEngine {
         return searchResults;
     }
 
+    //when a user clicks Recent Torrents
     public static List<Data> recent(List<Data> dataList) {
         List<Data> searchResults = new ArrayList<>(dataList);
 
@@ -76,6 +75,7 @@ public class SearchEngine {
         return searchResults;
     }
 
+    //when user clicks Trending
     public static List<Data> trending(List<Data> dataList) {
         List<Data> sortedList = new ArrayList<>(dataList);
         // Use Collections.sort with a custom comparator to sort by SE/LE ratio
@@ -89,6 +89,7 @@ public class SearchEngine {
         return sortedList;
     }
 
+    //is a "contains" method that ignores case type
     private static boolean containsIgnoreCase(String str, String searchTerm) {
         return str.toLowerCase().contains(searchTerm.toLowerCase());
     }
