@@ -40,28 +40,28 @@ public class Item extends Application {
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
 
-        VBox searchAndBtns = new SearchBarAndButtonsHelper().createBar("", "");
+        VBox searchAndBtns = new SearchBarAndButtonsHelper().createBar("");
         // searchAndBtns.setSpacing(5.0);
         searchAndBtns.setAlignment(Pos.CENTER);
         //putting each field of data object into a ready to display string
-        String fileCat = "File Type: "+data.getCategory()+"\n";
-        String fileSize = "File Size: "+data.getSize()+"\n";
-        String seeders = "Seeders: "+data.getSE()+"\n";
-        String leechers = "Leechers: "+data.getLE()+"\n";
-        String uploader = "Uploaded By: "+data.getUploadBy()+"\n";
+        String fileCat = "File Type: "+data.getCategory()+"\n\n";
+        String fileSize = "File Size: "+data.getSize()+"\n\n";
+        String seeders = "Seeders: "+data.getSE()+"\n\n";
+        String leechers = "Leechers: "+data.getLE()+"\n\n";
+        String uploader = "Uploaded By: "+data.getUploadBy()+"\n\n";
         String finalDetails = fileCat+fileSize+seeders+leechers+uploader;
 
         String description = data.getDescription();
 
         //Labels serving as headers
-        Label title = new Label("     About "+data.getName());
-        title.setStyle("-fx-font: 10 verdana; -fx-text-fill: #a4a4ff; -fx-font-weight: bold");
-        Label fileDesc = new Label("   File Description:");
-        fileDesc.setStyle("-fx-font: 10 verdana; -fx-text-fill: #a4a4ff; -fx-font-weight: bold");
-        Label fileDet = new Label("   Torrent Details:");
-        fileDet.setStyle("-fx-font: 10 verdana; -fx-text-fill: #a4a4ff; -fx-font-weight: bold");
-        Label downDesc = new Label("   Download Options:");
-        downDesc.setStyle("-fx-font: 10 verdana; -fx-text-fill: #a4a4ff; -fx-font-weight: bold");
+        Label title = new Label(data.getName());
+        title.setStyle("-fx-font: 24 verdana; -fx-text-fill: #a4a4ff; -fx-font-weight: bold");
+        Label fileDesc = new Label("   File Description");
+        fileDesc.setStyle("-fx-font: 16 verdana; -fx-text-fill: #a4a4ff; -fx-font-weight: bold");
+        Label fileDet = new Label("   Torrent Details");
+        fileDet.setStyle("-fx-font: 16 verdana; -fx-text-fill: #a4a4ff; -fx-font-weight: bold");
+        Label downDesc = new Label("   Download Options");
+        downDesc.setStyle("-fx-font: 16 verdana; -fx-text-fill: #a4a4ff; -fx-font-weight: bold");
 
         //rectangle containing the uppermost header
         Rectangle titleRect = new Rectangle(bounds.getWidth(), 0.05*bounds.getHeight());
@@ -78,13 +78,13 @@ public class Item extends Application {
         TextArea details = new TextArea(finalDetails);
         details.setMinHeight(0.45*bounds.getHeight());
         details.setMaxWidth(0.3*bounds.getWidth());
-        details.setStyle("-fx-control-inner-background: #2d3545; -fx-font: 16 verdana; -fx-text-fill: #c7c7ff");
+        details.setStyle("-fx-control-inner-background: #2d3545; -fx-font: 16 verdana; -fx-text-fill: #c7c7ff; -fx-text-box-border: transparent; -fx-focus-color: transparent;");
         details.setEditable(false);
         //details.setAlignment(Pos.TOP_LEFT);
         //stackpane putting header text on rectangle
         StackPane infoBar = new StackPane();
         infoBar.getChildren().addAll(infoRect,fileDet);
-        StackPane.setAlignment(fileDet, Pos.CENTER_LEFT);
+        StackPane.setAlignment(fileDet, Pos.CENTER);
         //vbox combining both objects
         VBox infoFrame = new VBox(0);
         infoFrame.getChildren().addAll(infoBar, details);
@@ -96,13 +96,13 @@ public class Item extends Application {
         TextArea descript = new TextArea(description);
         descript.setMaxHeight(0.2*bounds.getHeight());
         descript.setMaxWidth(0.3*bounds.getWidth());
-        descript.setStyle("-fx-control-inner-background: #2d3545; -fx-font: 14 verdana; -fx-text-fill: #c7c7ff");
+        descript.setStyle("-fx-control-inner-background: #2d3545; -fx-font: 14 verdana; -fx-text-fill: #c7c7ff; -fx-text-box-border: transparent; -fx-focus-color: transparent;");
         descript.setEditable(false);
         //descript.setAlignment(Pos.TOP_LEFT);
         //stackpane putting header text on the rectangle
         StackPane textBar = new StackPane();
         textBar.getChildren().addAll(textRect,fileDesc);
-        StackPane.setAlignment(fileDesc, Pos.CENTER_LEFT);
+        StackPane.setAlignment(fileDesc, Pos.CENTER);
         //vbox combining header stackpane and TextArea
         VBox textFrame = new VBox(0);
         textFrame.getChildren().addAll(textBar, descript);
@@ -110,7 +110,7 @@ public class Item extends Application {
         Rectangle buttonRect1 = new Rectangle(0.3*bounds.getWidth(),0.05*bounds.getHeight());
         StackPane buttonRect1Pane = new StackPane();
         buttonRect1Pane.getChildren().addAll(buttonRect1, downDesc);
-        StackPane.setAlignment(downDesc, Pos.CENTER_LEFT);
+        StackPane.setAlignment(downDesc, Pos.CENTER);
 
         Rectangle buttonRect2 = new Rectangle(0.3*bounds.getWidth(), 0.15*bounds.getHeight());
         buttonRect1.setFill(Color.web("#181c24"));
@@ -120,7 +120,6 @@ public class Item extends Application {
 
 
         Image m = new Image(new FileInputStream(new File("res/magnet.png").getAbsolutePath()));
-        //Image m = new Image(new FileInputStream("C:\\Users\\aathi\\OneDrive\\Documents\\CS2450FINAL\\Pirate-Bay\\res\\magnet.png"));
         ImageView magnetView = new ImageView(m);
         magnetView.setFitWidth(50);
         magnetView.setFitHeight(50);
@@ -132,7 +131,6 @@ public class Item extends Application {
         magnetBox.getChildren().addAll(magnet,magnetLabel);
         
         Image d = new Image(new FileInputStream(new File("res/download.png").getAbsolutePath()));
-        //Image d = new Image(new FileInputStream("C:\\Users\\aathi\\OneDrive\\Documents\\CS2450FINAL\\Pirate-Bay\\res\\download.png"));
         ImageView downloadView = new ImageView(d);
         downloadView.setFitWidth(50);
         downloadView.setFitHeight(50);
@@ -150,6 +148,7 @@ public class Item extends Application {
         buttons.getChildren().addAll(magnetBox,downloadBox);
         magnetBox.setAlignment(Pos.CENTER);
         downloadBox.setAlignment(Pos.CENTER);
+        buttons.setAlignment(Pos.CENTER);
 
         StackPane buttonPane = new StackPane();
         buttonPane.getChildren().addAll(buttonRect2,buttons);
