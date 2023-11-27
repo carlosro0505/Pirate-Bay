@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.util.List;
 
 import javax.print.DocFlavor.URL;
 
@@ -149,7 +150,14 @@ public class Categories extends Application{
             for (int i = 0; i < options.length; i++) {
                 optionLinks[i] = new Hyperlink(options[i]);
                 final int index = i; // Needed for lambda expression
-                optionLinks[i].setOnAction(event -> handleLinkClick(options[index]));
+                optionLinks[i].setOnAction(event -> {
+                    try {
+                        handleLinkClick(options[index]);
+                    } catch (FileNotFoundException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                });
                 optionsVBox.getChildren().add(optionLinks[i]);
             }
     
@@ -166,9 +174,10 @@ public class Categories extends Application{
         }
     }
     
-    private void handleLinkClick(String category) {
-        // Handle the link click event (e.g., open a new scene or perform some action)
-        System.out.println("Link clicked: " + category);
+    //if user clicks the username 
+    private void handleLinkClick(String clickedID) throws FileNotFoundException {
+                // Found the associated ID, do something with the data
+                SceneManager.showSearchScene("", clickedID);
     }
 
     public void closePrimaryStage() {
