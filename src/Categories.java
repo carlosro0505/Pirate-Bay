@@ -42,14 +42,14 @@ public class Categories extends Application {
 
         VBox vbox1 = createCategoryBox("res/musicNote.png", "Audio", "Music", "Audio books", "Sound clips", "Podcast",
                 "Other");
-        VBox vbox2 = createCategoryBox("res/games.png", "Games", "PC", "Mac", "PlayStation, Xbox, Nintendo",
+        VBox vbox2 = createCategoryBox("res/games.png", " Games", "PC", "Mac", "PlayStation, Xbox, Nintendo",
                 "IOS, Android", "Other");
         VBox vbox3 = createCategoryBox("res/movies.png", "Videos", "Movies", "Music Videos", "Movie Clips", "TV Shows",
                 "Other");
-        VBox vbox4 = createCategoryBox("res/apps.png", "Applications", "Windows", "Mac", "UNIX", "IOS, Android",
+        VBox vbox4 = createCategoryBox("res/apps.png", " Applications", "Windows", "Mac", "UNIX", "IOS, Android",
                 "Other");
-        VBox vbox5 = createCategoryBox("res/books.png", "Books", "Comics", "Fiction", "Fantasy", "Biography", "Other");
-        VBox vbox6 = createCategoryBox("res/puzzle.png", "Other", "Radio", "SkillShare", "Udemy", "Pearson", "Other");
+        VBox vbox5 = createCategoryBox("res/books.png", " Books", "Comics", "Fiction", "Fantasy", "Biography", "Other");
+        VBox vbox6 = createCategoryBox("res/puzzle.png", " Other", "Radio", "SkillShare", "Udemy", "Pearson", "Other");
 
         // Create HBoxes for the first three categories and the last three categories
         HBox hboxTop = new HBox(vbox1, vbox2, vbox3);
