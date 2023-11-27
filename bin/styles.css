@@ -72,19 +72,27 @@
     -fx-text-fill: #d6d4d4;
 }
 
+.vbox-table {
+    -fx-background-color: transparent;
+}
+
 /* changes the background*/
 .table-view {
     -fx-table-cell-border-color: transparent;
-    -fx-background-color: #181c24;
     -fx-text-fill: #d6d4d4;
     -fx-font-family: "Verdana";
+    -fx-control-inner-background: #181c24;
     /*-fx-font-size: 10.5px; */
    /* -fx-padding: 0 0 0 0; */
   }
 
+  .table-view .table-row-cell:hover {
+    -fx-background-color: #67679f;
+}
+
   /*this affects the column header text padding at least*/
   .table-view .column-header-background{
-    -fx-background-color: #181c24;
+    -fx-background-color: transparent;
     /*-fx-background-color: linear-gradient(to bottom, #181c24, #181c24); */
     /*-fx-background-radius: 5.0 5.0 0.0 0.0;*/
     -fx-background-insets: 0 11px 0 0;
@@ -97,6 +105,7 @@
 
 /* controls column header text*/
 .table-view .column-header .label {
+    -fx-background-color: #181c24;
     -fx-text-fill: #a4a4ff;
     -fx-alignment: CENTER-LEFT; /* Set text alignment to the left */
 }
@@ -105,12 +114,13 @@
 .table-view .table-cell{
     -fx-padding: 20px 0 20px 0;
     -fx-font-size: 15px;
-    
 }
 
 .table-row-cell {
     -fx-border-width: 0.3 0 0.5 0; /* Top border width is 1px */
     -fx-border-color: rgba(110, 108, 108, 0.5);
+    -fx-background-color: #181c24; /* Default row background color */
+
     /* -fx-cell-size: 100px;  Set your desired row height */ 
     -fx-alignment: CENTER;  
     /* Color of the border */
