@@ -1,3 +1,7 @@
+## Created by Carlos Rodriguez, Aathi Selvam, and Pablo Vivanco Copyright 2023
+User much tailor the file launch.json according to his/her filepath (i.e., JavaFX .json files).
+Enjoy. 
+
 ## Getting Started
 
 Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
