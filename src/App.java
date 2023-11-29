@@ -169,7 +169,7 @@ public class App extends Application {
         magnBtn.setOnAction(event -> {
             try {
                 // placeholder
-                SceneManager.showCategoriesScene();
+                SceneManager.showMainScene();
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

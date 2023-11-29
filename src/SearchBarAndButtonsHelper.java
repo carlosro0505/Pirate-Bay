@@ -99,7 +99,7 @@ public class SearchBarAndButtonsHelper {
         catLabel.getStyleClass().add("portals");
         Label recLabel = new Label(" Recent \nTorrents");
         recLabel.getStyleClass().add("portals");
-        Label fireLabel = new Label("Trending");
+        Label fireLabel = new Label("Trending \n d");
         fireLabel.getStyleClass().add("portals");
         VBox magn = new VBox(magnBtn, magnLabel);
         VBox cat = new VBox(catBtn, catLabel);
